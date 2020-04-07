@@ -9,6 +9,8 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
 
+  z-index: 9999999999;
+
   &.ChangeMenu {
     max-height: 90px; 
     background: black !important;
@@ -22,6 +24,8 @@ export const Nav = styled.div `
   flex-wrap: nowrap;
   justify-content: space-between; 
   align-items: center;
+
+  z-index: 99999999999; 
 
   img{
     margin: 0.5rem 1rem;

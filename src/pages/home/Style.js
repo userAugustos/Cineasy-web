@@ -98,6 +98,25 @@ export const BtnContent = styled.div`
   }
 `;
 export const Section = styled.div`
+  
+  display: block;
+  justify-content: center;
   width: 100%;
-  min-height: 850px;
 `;
+
+export const DivMovies =  styled.div ` 
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  
+  margin: 30px auto;
+
+  width: 100vw;
+  max-height: 500px;
+  
+   img {
+    max-width: 300px;
+  }
+
+`

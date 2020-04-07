@@ -5,7 +5,7 @@ import {
   HeaderContainer, Collapse, ShowUser, Nav, IconDiv, ToggleButton 
   } from './Style.js';
 import {
- FaBars, FaHome, FaDownload, FaTicketAlt, FaNewspaper, FaCreditCard, FaFilm
+ FaBars, FaHome, FaTicketAlt, FaNewspaper, FaCreditCard, FaFilm
   } from 'react-icons/fa';
 
 
@@ -50,7 +50,7 @@ import {
 
             console.log(CompORUser);
 
-            if (CompORUser == 1) {
+            if (CompORUser === 1) {
 
                 return (
 
@@ -98,13 +98,15 @@ import {
           }
 
         if (isLoggedIn) { 
-            const UserInfo = {
+
+          const UserInfo = {
             "id": 1,
             "nome": "Felipe",
             "lvlUser": 2,
             "plan": "free",
             "imageUrl": "https://ih1.redbubble.net/image.24644759.7716/fc,550x550,grass_green.u2.jpg",
           }
+
           return TypeUser({UserInfo});
         }
         else {
@@ -125,7 +127,7 @@ import {
 
   return (
 
-      <HeaderContainer className={navBackground == true ? 'ChangeMenu' : ''}>
+      <HeaderContainer className={navBackground === true ? 'ChangeMenu' : ''}>
 
         <Nav>
 
