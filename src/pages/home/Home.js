@@ -31,8 +31,8 @@ export default function Home() {
             <p>Com o App da Cineasy você tem acesso a comunidades exclusivas do mundo do cinema, a ingressos de cinema, combos e mimos, Além de descontos progressivos em ingressos.</p>
             <p> Eai, tá esperando o que para baixar e virar assinante? </p>
             <BtnContent>
-              <button> <FaGooglePlay color="#FFF" size={20} /> Android</button>
-              <button> <FaApple color="#FFF" size={20}/> Apple</button>
+              <button> <span>Disponivel em </span> <FaGooglePlay color="#FFF" size={26} /> Google Play </button>
+              <button> <span>Disponivel em </span> <FaApple color="#FFF" size={26}/>  App Store</button>
             </BtnContent>
           </DivDash>
           

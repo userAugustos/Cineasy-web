@@ -8,6 +8,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &.ChangeMenu {
+    max-height: 90px; 
+    background: black !important;
+  }
 `
 export const Nav = styled.div `
 
@@ -72,6 +77,7 @@ export const IconDiv = styled.div `
   
 `
 export const Collapse = styled.div`
+
     transition: 0.5s;
 
     display: flex;
@@ -104,7 +110,7 @@ export const Collapse = styled.div`
     svg {
       margin: auto 10px;
     }
-    a{
+    ul li a{
       
       white-space: nowrap;
       font-weight: 600;
@@ -119,18 +125,19 @@ export const Collapse = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: 12%;
+      margin-left: 0;
+
       transition: 0.5s;
     }
 
     @media (max-width: 760px) {
 
-      width: 89vw;
+      width: 100vw;
       height: 100vh;
       display: block !important;
       justify-content: center;
       align-items: center;
-      margin-left: 100%;
+      margin-left:100%;
       position: absolute;
       
       ul {
@@ -175,19 +182,32 @@ export const LoginButton = styled.button`
 export const ShowUser = styled.div` 
     
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: -15px 2rem 0 2rem;
 
     img{
       margin-bottom: 10px;
+      border-radius: 50%;
       width: 3rem;
-      height: 2.5rem;
+      height: 3rem;
+    }
+
+    a {
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
 
     span{
       font-weight: 600;
     }
 
+    @media (max-width: 760px) {
+      img{
+        width: 2.5rem;
+        height: 2rem;
+        margin-top: 10px;
+      }
+    }
 `
