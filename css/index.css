@@ -1,0 +1,32 @@
+.home{
+  background: url(../assets/bghome.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 700px;
+}
+
+.scrollFalse {
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 992px){
+  .nav-item{
+    margin-left: 20px;
+  }
+
+  .nav-link:hover{
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+@media only screen and (max-width: 991px){
+  .home{
+    padding-top: 200px;
+  }
+
+  .scrollFalse {
+    margin-top: 0;
+  }
+}
