@@ -23,57 +23,64 @@
 
 <body>
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrollFalse">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="./assets/logo.png" height="70" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile" aria-controls="navMobile"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navMobile">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light">Logar</button>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav class="navbar-custom">
+    <ul class="navbar-nav-custom">
+      <li class="navbar-custom-logo">
+        <a href="/admin/dashboard" class="nav-custom-link">
+          <img src="./assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
+          <img src="./assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
+        </a>
+      </li>
+  
+      <li class="nav-custom-item">
+        <a href="/admin/dashboard" class="nav-custom-link">
+          <i class="fas fa-home"></i>
+          <span class="nav-custom-link-text">Home</span>
+        </a>
+      </li>
+      <li class="nav-custom-item">
+        <a href="/admin/dashboard" class="nav-custom-link">
+          <i class="fas fa-sign-in-alt"></i>
+          <span class="nav-custom-link-text">Login</span>
+        </a>
+      </li>
+      <li class="nav-custom-item">
+        <a href="/admin/dashboard" class="nav-custom-link">
+          <i class="fas fa-power-off"></i>
+          <span class="nav-custom-link-text">Sair</span>
+        </a>
+      </li>
+  
+    </ul>
   </nav>
 
-  <section class="home d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-12 align-self-center">
-          <h2>Descontos exclusivos integrados na plataforma</h2>
-          <p>Com o App da Cineasy você tem acesso a comunidades exclusivas do mundo do cinema, a ingressos de cinema, combos e
-            mimos, além de descontos progressivos em ingressos.</p>
-          <p> Eai, tá esperando o que para baixar e virar assinante? Disponível em</p>
-          <button type="button" class="btn btn-dark btn-lg mr-2">
-            <i class="fab fa-google-play mr-1"></i> Play Store
-          </button>
-          <button type="button" class="btn btn-dark btn-lg">
-            <i class="fab fa-app-store-ios mr-1"></i> App Store
-          </button>
-        </div>
-        <div class="col-md-6 col-sm-12 d-flex justify-content-center">
-          <img src="./assets/CelularCine.png" alt="" height="400">
+  <main>
+    <section class="home d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-12 align-self-center">
+            <h2>Descontos exclusivos integrados na plataforma</h2>
+            <p>Com o App da Cineasy você tem acesso a comunidades exclusivas do mundo do cinema, a ingressos de cinema,
+              combos e
+              mimos, além de descontos progressivos em ingressos.</p>
+            <p> Eai, tá esperando o que para baixar e virar assinante? Disponível em</p>
+            <button type="button" class="btn btn-dark btn-lg mr-2">
+              <i class="fab fa-google-play mr-1"></i> Play Store
+            </button>
+            <button type="button" class="btn btn-dark btn-lg">
+              <i class="fab fa-app-store-ios mr-1"></i> App Store
+            </button>
+          </div>
+          <div class="col-md-6 col-sm-12 d-flex justify-content-center">
+            <img src="./assets/CelularCine.png" alt="" height="400">
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="filmes d-flex align-items-center"></section>
+    <section class="filmes d-flex align-items-center"></section>
+
+  </main>
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,4 +1,134 @@
 *{
   transition: 0.2s;
   outline: none;
+  text-decoration: none !important;
+}
+
+main {
+  margin-left: 5rem;
+}
+
+.navbar-custom {
+  position: fixed;
+  background-color: #23232e;
+  transition: width 600ms ease;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.navbar-nav-custom {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-custom-item {
+  width: 100%;
+}
+
+.nav-custom-item:last-child {
+  margin-top: auto;
+}
+
+.nav-custom-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: #b6b6b6;
+  text-decoration: none;
+  transition: 200ms;
+}
+
+.nav-custom-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background: #141418;
+  color: #ececec;
+}
+
+.nav-custom-link-text {
+  display: none;
+  margin-left: 1rem;
+}
+
+.nav-custom-link svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+.navbar-custom-logo {
+  width: 100%;
+  /* margin-left: 20%; */
+}
+
+.navbar-custom-logo .navbar-custom-logo-fixed {
+  transition: 600ms;
+  margin-left: 13px;
+}
+
+.nav-custom-logo
+{
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: 600ms;
+}
+
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .navbar-custom {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+    overflow-x: auto;
+  }
+
+  .navbar-custom-logo {
+    display: none;
+  }
+
+  .navbar-nav-custom {
+    flex-direction: row;
+  }
+
+  .nav-custom-link {
+    justify-content: center;
+  }
+
+  main {
+    margin: 0;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .navbar-custom {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+  }
+
+  .navbar-custom:hover {
+    width: 16rem;
+  }
+
+  .navbar-custom:hover .nav-custom-link-text {
+    display: inline;
+  }
+
+  .navbar-custom:hover .navbar-custom-logo .navbar-custom-logo-fixed
+  {
+    margin-left: 11rem;
+  }
+
+  .navbar-custom:hover .nav-custom-logo
+  {
+    left: 0px;
+    margin-left: 30px;
+  }
 }
