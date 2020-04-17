@@ -1,0 +1,114 @@
+
+body{
+	background: rgba(245, 244, 213, 0.83);
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+h4{
+	margin: 10px 0 10px 10px;
+}
+.home{
+  background: url(../assets/bghome.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 500px
+}
+#AppAD{
+	margin-top: 2rem!important;
+}
+#image img {
+	width: 80%;
+	max-width: 350px;
+	height: 98vh;
+}
+#likes a{
+	color: black;
+}
+.filmes{
+	margin: 20px 0 0 5px;
+	max-width: 100%;
+}
+.filmes .card{
+	max-width: 300px; 
+	margin: 10px auto;
+}
+.filmes .card-body{
+	justify-content: space-between;
+}
+.card-body #likes{
+	margin-bottom: -3%;
+}
+.card-deck {
+	margin: 1% 0 2% 0.01%; 
+	max-width: 100%;
+}
+
+
+/*MODAL*/
+.modal-content{
+	background-color: transparent !important;
+	background-clip: none !important;
+	border: none !important;
+	border-radius: none !important;
+	
+}
+.conteudo-modal {
+	position: relative;
+	margin: 10px auto;
+	width: 80vw;
+	height: 90vh;
+
+
+	background: url(../assets/GodFather.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+.conteudo-modal #phrase {
+	font-family: 'Girassol', cursive;
+	display: block;
+	max-width: 25%;
+	text-align: center;
+	margin-right: -25%;
+	margin-top: -35%;
+}
+.conteudo-modal #plans{
+	font-family: 'Fira Sans', sans-serif;
+	align-self: center;
+	display: block;
+	max-width: 40%;
+	height: 100%;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 30%;
+	margin-left: -50%; 
+}
+#plans button{
+	margin-top: 10%;
+}
+.modal-dialog{
+	color: white;
+	margin: 0 0 0 50%;
+}
+
+#plans-title {
+	margin: 10px 10px;
+}
+@media (max-width: 800px){
+	.filmes div:nth-child(n+4):nth-child(-n+8){ /*selecionando todos as div's juntas, da quarta a oitava*/
+		display: none;
+	}
+	.card-deck {
+		margin: 10px auto;
+	}
+	.conteudo-modal #phrase {
+		display: none;
+	}
+}
