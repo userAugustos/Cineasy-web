@@ -61,7 +61,7 @@ form{
 	display: block;
 	text-align: right;
 	text-decoration: none;
-	color: #999;
+	color: #212121;
 	font-size: 0.9rem;
 	transition: .3s;
 }
@@ -97,10 +97,6 @@ form{
 	}
 
 	.img{
-		display: none;
-	}
-
-	.wave{
 		display: none;
 	}
 
