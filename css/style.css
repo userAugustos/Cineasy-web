@@ -22,7 +22,6 @@ h4{
 #image img {
 	width: 80%;
 	max-width: 350px;
-	height: 98vh;
 }
 #likes a{
 	color: black;
@@ -48,6 +47,9 @@ h4{
 
 
 /*MODAL*/
+#modalPlanos{
+	overflow: hidden;
+}
 .modal-content{
 	background-color: transparent !important;
 	background-clip: none !important;
