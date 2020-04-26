@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <title>Cineasy</title>
@@ -14,9 +14,12 @@
   <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
 
+  <link href="./node_modules/aos/dist/aos.css" rel="stylesheet">
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/default.css">
   <link rel="stylesheet" href="./css/style.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
@@ -229,37 +232,122 @@
       </div>
     </section>
 
-    <h4 id="plans-title">Pacotes Cineasy</h4>
     <!--Plans Cards-->
+
+  <h4 id="plans-title">Pacotes Cineasy</h4>
+
     <div class="card-deck">
-      <div class="card">
+      <div class="card" data-aos="fade-left">
         <img class="card-img-top" src="https://i.pinimg.com/originals/65/41/99/654199df212b300dde6993a9cf18e13f.jpg">
         <div class="card-body">
+          <h5 class="card-title">Plano Free</h5>
+          <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior.
+
           <h5 class="card-title">Título do card</h5>
           <p class="card-text">Este é um card mais longo com suporte a texto embaixo, que funciona como uma introdução a
             um conteúdo adicional. Este conteúdo é um pouco maior.
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <img class="card-img-top" src="https://i.pinimg.com/originals/65/41/99/654199df212b300dde6993a9cf18e13f.jpg">
         <div class="card-body">
+
+          <h5 class="card-title">Plano Super Hero</h5>
+          <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+
           <h5 class="card-title">Título do card</h5>
           <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um
             conteúdo adicional.</p>
+
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-right">
         <img class="card-img-top" src="https://i.pinimg.com/originals/65/41/99/654199df212b300dde6993a9cf18e13f.jpg">
         <div class="card-body">
+
+          <h5 class="card-title">Plano Hero</h5>
+          <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.
           <h5 class="card-title">Título do card</h5>
           <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um
             conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em
             ação.
+
         </div>
       </div>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark">
+      <div style="background-color: black; color: white">
+        <div class="container">
+          <div class="row py-4 d-flex align-items-center">
+            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+              <h6 class="mb-0">Veja mais sobre nós nas nossas redes sociais!</h6>
+            </div>
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+              <!-- Facebook -->
+              <a href="#" class="" style="color: white">
+                <i class="fab fa-facebook-f white-text mr-4"></i>
+              </a>
+              <!-- Twitter -->
+              <a href="#" class="" style="color: white">
+                <i class="fab fa-twitter white-text mr-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center text-md-left mt-5">
+        <div class="row mt-3">
+          <div class="col-sm-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h6 class="text-uppercase font-weight-bold">Cineasy</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>Cineasy é uma iniciativa para mudar o jeito que você experiência o cinema, você pode aproveitar tudo que a cineasy lhe dispões, assinando os planos Cineasy e baixando o App</p>
+          </div>
+          <div class="col-sm-1 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase font-weight-bold">Planos</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a href="#">Free</a>
+            </p>
+            <p>
+              <a href="#">Hero</a>
+            </p>
+            <p>
+              <a href="#">Super Hero</a>
+            </p>
+          </div>
+          <div class="col-sm-1 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase font-weight-bold">Empresas parceiras</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a href="#">Cinemark</a>
+            </p>
+            <p>
+              <a href="#">Moviecom</a>
+            </p>
+            <p>
+              <a href="#">Não sei brother</a>
+            </p>
+            <p>
+              <a href="#">Outra empresa</a>
+            </p>
+          </div>
+          <div class="col-sm-1 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase font-weight-bold">Baixe o App</h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+              <a href="#" style="color: black">
+                <i class="fab fa-google-play mr-1"></i>Play Store</p>
+              </a>
+            <p>
+              <a href="#" style="color: black">
+                <i class="fab fa-app-store-ios mr-1"></i> Apple Store</p>
+              </a>
+            <p>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Modal -->
@@ -298,6 +386,11 @@
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <script src="node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+
+  <script src="node_modules/aos/dist/aos.js" ></script>
+  <script>
+    AOS.init();
+  </script>
 
   <!-- Custom JS -->
   <script src="./js/index.js"></script>
