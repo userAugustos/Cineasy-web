@@ -132,3 +132,11 @@ main {
     margin-left: 30px;
   }
 }
+
+.btnVerSenha {
+  margin-right: 15px;
+  position: relative;
+  margin-top: -27px !important;
+  z-index: 5;
+  cursor: pointer;
+}

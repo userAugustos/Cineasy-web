@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
 
   <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/default.css">
@@ -29,26 +30,32 @@
   <nav class="navbar-custom">
     <ul class="navbar-nav-custom">
       <li class="navbar-custom-logo">
-        <a href="/admin/dashboard" class="nav-custom-link">
+        <a class="nav-custom-link">
           <img src="./assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
           <img src="./assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
         </a>
       </li>
 
       <li class="nav-custom-item">
-        <a href="/admin/dashboard" class="nav-custom-link">
+        <a href="/" class="nav-custom-link">
           <i class="fas fa-home"></i>
           <span class="nav-custom-link-text">Home</span>
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/admin/dashboard" class="nav-custom-link">
+        <a href="/login.html" class="nav-custom-link">
           <i class="fas fa-sign-in-alt"></i>
           <span class="nav-custom-link-text">Login</span>
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/admin/dashboard" class="nav-custom-link">
+        <a href="/cadastro.html" class="nav-custom-link">
+          <i class="fas fa-user-plus"></i>
+          <span class="nav-custom-link-text">Cadastro</span>
+        </a>
+      </li>
+      <li class="nav-custom-item">
+        <a href="/cadastro.html" class="nav-custom-link">
           <i class="fas fa-power-off"></i>
           <span class="nav-custom-link-text">Sair</span>
         </a>
@@ -63,21 +70,25 @@
     <!--App AD-->
     <section class="home d-flex align-items-center">
       <div class="container">
-        <div class="row">
+        <div class="row animated fadeIn">
           <div class="col-md-6 col-sm-12 align-self-center" id="AppAD">
             <h2>Descontos exclusivos integrados na plataforma</h2>
             <p>Com o App da Cineasy você tem acesso a comunidades exclusivas do mundo do cinema, a ingressos de cinema,
               combos e
               mimos, além de descontos progressivos em ingressos.</p>
             <p> Eai, tá esperando o que para baixar e virar assinante? Disponível em</p>
-            <button type="button" class="btn btn-dark btn-lg mr-2">
+            <button type="button" class="btn btn-dark mr-2">
               <i class="fab fa-google-play mr-1"></i> Play Store
             </button>
-            <button type="button" class="btn btn-dark btn-lg">
+            <button type="button" class="btn btn-dark">
               <i class="fab fa-app-store-ios mr-1"></i> App Store
             </button>
+            <span class="mx-2 d-small-off">ou</span>
+            <a href="cadastro.html" class="btn btn-outline-dark d-small-off">
+              Cadastre - se
+            </a>
           </div>
-          <div class="col-md-6 col-sm-12 d-flex justify-content-center" id="image">
+          <div class="col-md-6 col-sm-12 my-4 d-flex justify-content-center" id="image">
             <img src="./assets/CelularCine.png" alt="">
           </div>
         </div>
@@ -265,7 +276,7 @@
             <h5>Assine os planos Cineasy, com os planos você terá acesso a vantagens unicas dentro do website e
               aplicativo mobile. </h5>
             <h5>Você poderá teracesso a desontos únicos e pacotes especias </h5>
-    
+
             <button class="btn btn-danger" data-dismiss="modal" aria-label="Fechar">Planos</button>
           </div>
           <div id="phrase">

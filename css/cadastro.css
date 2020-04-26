@@ -1,0 +1,43 @@
+* {
+	margin: 0px; 
+	padding: 0px; 
+  box-sizing: border-box;
+}
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-register {
+  width: 100%;
+  display: flex;
+}
+
+.register-content {
+  width: 520px;
+  min-height: 100vh;
+  background: rgba(33, 33, 33, 1);
+  position: relative;
+  padding: 55px;
+}
+
+.register-image {
+  background-image: url('../assets/pulp-fiction.jpeg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  width: calc(100% - 520px);
+  position: relative;
+  z-index: 1;
+}
+
+.register-form {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .register-content {
+    padding: 25px;
+  }
+}
