@@ -1,13 +1,20 @@
 
 body{
-	background: rgba(245, 244, 213, 0.83);
+	background: #23232e;
 	margin: 0;
 	padding: 0;
 	font-size: 100%;
+	color: white;
 }
 h4{
 	margin: 10px 0 10px 10px;
 }
+
+footer{
+	background-color: white;
+	color: black;
+}
+
 .home{
   background: url(../assets/bghome.png);
   background-position: center center;
@@ -24,9 +31,30 @@ h4{
 	width: 80%;
 	max-width: 350px;
 }
-#likes a{
+/*Cards */
+.card{
 	color: black;
 }
+.card-body #likes{
+	margin-bottom: -3%;
+}
+.card-plans{
+
+}
+.card-deck {
+	margin: 1% 0 2% 0.01%;
+	max-width: 100%;
+}
+.card-body{
+	border-radius: 4px;
+	background-color: white;
+	color: black;
+}
+.card img{
+	max-height: 600px;
+	min-height: 250px;
+}
+/*Estilização itens cards movies*/
 .filmes{
 	margin: 20px 0 0 5px;
 	max-width: 100%;
@@ -38,32 +66,36 @@ h4{
 .filmes .card-body{
 	justify-content: space-between;
 }
-.card-body #likes{
-	margin-bottom: -3%;
+#likes a{
+	color: black;
 }
-.card-deck {
-	margin: 1% 0 2% 0.01%;
-	max-width: 100%;
+/*Estilização itens dos cards plans*/
+#card-plans{
+	background-color: transparent;
+	background-clip: none;
+	border: none;
+}
+.card-img-overlay {
+	top: 70%;
+	max-height: 80px;
+}
+#category{
+	display: inline-flex !important;
+	padding: 1px 6px !important;
 }
 
 
 /*MODAL*/
 #modalPlanos{
 	overflow: hidden;
-}
-.modal-content{
-	background-color: transparent !important;
-	background-clip: none !important;
-	border: none !important;
-	border-radius: none !important;
-
+	color: black;
 }
 .conteudo-modal {
 	position: relative;
 	margin: 10px auto;
 	width: 80vw;
 	height: 90vh;
-
+	margin-left: 10%;
 
 	background: url(../assets/GodFather.jpg);
 	background-size: cover;
@@ -96,7 +128,7 @@ h4{
 #plans button{
 	margin-top: 10%;
 }
-.modal-dialog{
+ .modal-dialog{
 	color: white;
 	margin: 0 0 0 50%;
 }
@@ -104,20 +136,143 @@ h4{
 #plans-title {
 	margin: 10px 10px;
 }
+
+.modal-content{
+	color: black;
+	margin-left: 1%;
+}
+.modal-content img{
+	max-width: 100% !important;
+}
+.header-modal{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 40px 100px;
+	z-index: 1000;
+}
+.header-modal h3{
+	max-width: 170px;
+	color: Black;
+}
+.header-modal button{
+	max-width: 150px;
+	background: transparent;
+	border: none;
+}
+.banner-modal{
+	position: relative;
+	width: 100%;
+	min-height: 95vh;
+	padding: 0 100px;
+	background: url("https://i.pinimg.com/originals/ce/1b/11/ce1b11312209024b92e1c2431721f50c.jpg");
+	background-position: center;
+	background-size: cover;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.banner-modal .main-modal{
+	max-width: 600px;
+}
+.main-modal h2{
+	font-weight: 600;
+	font-size: 2rem;
+	letter-spacing: 0.1rem;
+	color: black;
+}
+.main-modal p{
+	color: black;
+	font-size: 1.2rem;
+	font-weight: 500;
+	line-height: 1.5rem;
+	margin: 15px 0 35px;
+}
+.modal-play{
+	position: relative;
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-size: 1.2rem;
+}
+.modal-play img{
+	margin: auto 10px;
+	max-width: 60px;
+}
+.trailer{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10000;
+	background: rgba(0,0,0,0.9);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+}
+.trailer.active{
+	visibility: visible;
+	opacity: 1;
+}
+.trailer iframe{
+	outline: none;
+}
+.trailer .modal-close{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	cursor: pointer;
+	filter: invert(1);
+	max-width: 30px;
+}
+
 @media (max-width: 800px){
+	body{
+		overflow: hidden;
+	}
 	.filmes div:nth-child(n+4):nth-child(-n+8){ /*selecionando todos as div's juntas, da quarta a oitava*/
 		display: none;
 	}
 	.card-deck {
 		margin: 10px auto;
 	}
+	.modal-content{
+		max-width: 100vw;
+	}
 	.conteudo-modal{
 		display: none;
 	}
-}
-
-@media (max-width: 991px){
-	.d-small-off{
-		display: none;
+	.header-modal{
+		padding: 20px 10px;
+	}
+	.logo-modal{
+		font-size: 0.8rem;
+	}
+	.header-modal h3{
+		max-width: 60px;
+	}
+	.header-modal button {
+		max-width: 60px !important;
+	}
+	.banner-modal {
+		padding: 0;
+	}
+	.banner-modal .main-modal{
+		max-width: 100%;
+		margin-top: 60px;
 	}
 }
