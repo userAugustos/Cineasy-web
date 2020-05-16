@@ -1,3 +1,4 @@
+
 <?php session_start(); include './controller/getMovies.php'?>
 <html lang="pt-br">
 <head>
@@ -22,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="././assets/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
 
 </head>
 
@@ -33,8 +34,9 @@
     <ul class="navbar-nav-custom">
       <li class="navbar-custom-logo">
         <a class="nav-custom-link">
-          <img src="././assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
-          <img src="././assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
+
+          <img src="../assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
+          <img src="../assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
         </a>
       </li>
 
@@ -51,12 +53,14 @@
         </a>
       </li>
       <li class="nav-custom-item">
+
         <a href="./view/cadastro.php" class="nav-custom-link">
           <i class="fas fa-user-plus"></i>
           <span class="nav-custom-link-text">Cadastro</span>
         </a>
       </li>
       <li class="nav-custom-item">
+
         <a href="./view/cadastro.php" class="nav-custom-link">
           <i class="fas fa-power-off"></i>
           <span class="nav-custom-link-text">Sair</span>
@@ -86,12 +90,16 @@
               <i class="fab fa-app-store-ios mr-1"></i> App Store
             </button>
             <span class="mx-2 d-small-off">ou</span>
+
             <a href="./view/cadastro.php" class="btn btn-outline-dark d-small-off">
+
               Cadastre - se
             </a>
           </div>
           <div class="col-md-6 col-sm-12 d-flex justify-content-center" id="image" data-aos="fade-right">
-            <img src="././assets/CelularCine.png" alt="">
+
+            <img src="../assets/CelularCine.png" alt="">
+
           </div>
         </div>
       </div>
@@ -101,6 +109,7 @@
 
     <!--Movies Cards-->
   <section class="filmes row align-items-center">
+
 
     <?php foreach ($movieObject as $key => $movie): ?>
 
@@ -125,6 +134,7 @@
         </div>
       </div>
       <?php endforeach; ?>
+
     </section>
 
     <!--Plans Cards-->
@@ -133,7 +143,8 @@
 
     <div class="card-deck">
       <div class="card" id="card-plans" data-aos="fade-left">
-        <img class="card-img-top" src="././assets/harley.png">
+
+        <img class="card-img-top" src="../assets/harley.png">
         <div class="card-body card-plans">
           <h5 class="card-title">Plano Free</h5> <h4>Gratuito</h4>
           <p class="card-text"> O plano free não lhe oferece nenhum beneficio na plataforma</p>
@@ -149,7 +160,9 @@
         </div>
       </div>
       <div class="card" id="card-plans" data-aos="fade-up">
-        <img class="card-img-top" src="././assets/tchala.png">
+
+        <img class="card-img-top" src="../assets/tchala.png">
+
         <div class="card-body card-plans">
 
           <h5 class="card-title">Plano Hero</h5> <h4>R$ 18,00</h4>
@@ -165,7 +178,9 @@
         </div>
       </div>
       <div class="card" id="card-plans" data-aos="fade-right">
-        <img class="card-img-top" src="././assets/darth_vader.png">
+
+        <img class="card-img-top" src="../assets/darth_vader.png">
+
         <div class="card-body cad-plans">
           <h5 class="card-title">Plano Super Hero</h5> <h4>R$22,00</h4>
           <p class="card-text">Com o plano Super Hero, você tem acesso a tudo dos planos free e Hero</p>
@@ -304,10 +319,12 @@
       </div>
     </div>
     <div class="trailer">
+
       <iframe width="560" height="315" src="https://www.youtube.com/embed/zQEjE_M2Esw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <img src="./assets/close.png" class="modal-close" alt="">
     </div>
   </div>
+
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
