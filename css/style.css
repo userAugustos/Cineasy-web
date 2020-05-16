@@ -50,9 +50,9 @@ footer{
 	background-color: white;
 	color: black;
 }
-.card img{
-	max-height: 600px;
-	min-height: 250px;
+#card-movie img{
+	height: 400px !important;
+	max-height: 460px !important;
 }
 /*Estilização itens cards movies*/
 .filmes{
@@ -169,25 +169,30 @@ footer{
 	width: 100%;
 	min-height: 95vh;
 	padding: 0 100px;
-	background: url("https://i.pinimg.com/originals/ce/1b/11/ce1b11312209024b92e1c2431721f50c.jpg");
-	background-position: center;
-	background-size: cover;
 
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
+.banner-modal img{
+	margin-left: -8%;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
 .banner-modal .main-modal{
 	max-width: 600px;
 }
 .main-modal h2{
+	position: relative;
 	font-weight: 600;
 	font-size: 2rem;
 	letter-spacing: 0.1rem;
-	color: black;
+	color: white;
 }
 .main-modal p{
-	color: black;
+	position: relative;
+	color: white;
 	font-size: 1.2rem;
 	font-weight: 500;
 	line-height: 1.5rem;
@@ -206,8 +211,9 @@ footer{
 	font-size: 1.2rem;
 }
 .modal-play img{
+	position: relative;
 	margin: auto 10px;
-	max-width: 60px;
+	max-width: 60px !important;
 }
 .trailer{
 	position: fixed;
@@ -239,7 +245,12 @@ footer{
 	filter: invert(1);
 	max-width: 30px;
 }
-
+@media (min-width: 750px) and (max-width: 1000px){
+	.card-img-overlay{
+		z-index: -99999999;
+		display: none !important;
+	}
+}
 @media (max-width: 800px){
 	body{
 		overflow: hidden;
@@ -260,7 +271,7 @@ footer{
 		padding: 20px 10px;
 	}
 	.logo-modal{
-		font-size: 0.8rem;
+		font-size: 1rem;
 	}
 	.header-modal h3{
 		max-width: 60px;

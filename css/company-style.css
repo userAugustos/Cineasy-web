@@ -1,0 +1,129 @@
+*{
+  box-sizing: border-box;
+}
+a{
+  outline: none;
+}
+body{
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 100%;
+}
+
+/*header stylesheet*/
+header{
+  min-width: 100vw;
+  width: 100vw;
+  height: 2.5rem;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+header a{
+  cursor: pointer;
+}
+.acessDiv{
+  width: 32.4vw;
+  height: 100%;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: -8px;
+  border-bottom-right-radius: -8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.2rem;
+}
+
+/*content stylesheet*/
+main {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+}
+main .cadPost{
+  width: 95%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+main .postForm{
+
+}
+
+main .preview{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-top: -6%;
+}
+
+.input-group-text {
+  font-weight: bolder;
+  background-color: #fff;
+}
+/*variables stylesheet*/
+.show {
+  display: flex;
+}
+.hide {
+  display: none !important;
+}
+.clickEffect{
+  background: #ebebeb;
+  padding: 5px;
+  margin: 5px 5px 0 5px;
+}
+/*Cards */
+.card{
+	color: black;
+  min-width: 360px;
+  min-height: 400px;
+  max-width: 640px;
+  max-height: 1000px;
+}
+.card-body #likes{
+	margin-bottom: -3%;
+}
+.card-deck {
+	margin: 1% 0 2% 0.01%;
+	max-width: 100%;
+}
+.card-body{
+	border-radius: 4px;
+	background-color: white;
+	color: black;
+}
+#card-movie img{
+  min-width: 100%;
+	height: 400px !important;
+	max-height: 460px !important;
+}
+/*Estilização itens cards movies*/
+.preview .card{
+	margin: 0 auto;
+}
+.preview .card-body{
+	justify-content: space-between;
+}
+#likes a{
+	color: black;
+}
+#category{
+	display: inline-flex !important;
+	padding: 1px 6px !important;
+}
+.card-img-overlay {
+	top: 70%;
+	max-height: 80px;
+}
