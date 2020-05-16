@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="pt-br">
 
+<?php session_start(); include './controller/getMovies.php'?>
+<html lang="pt-br">
 <head>
   <title>Cineasy</title>
   <!-- Required meta tags -->
@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
 
 </head>
 
@@ -34,8 +34,9 @@
     <ul class="navbar-nav-custom">
       <li class="navbar-custom-logo">
         <a class="nav-custom-link">
-          <img src="./assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
-          <img src="./assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
+
+          <img src="../assets/Nome.png" width="50%" alt="" class="nav-custom-logo">
+          <img src="../assets/Ingresso.png" height="28px" alt="" class="navbar-custom-logo-fixed">
         </a>
       </li>
 
@@ -46,19 +47,21 @@
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/login.html" class="nav-custom-link">
+        <a href="./view/login.php" class="nav-custom-link">
           <i class="fas fa-sign-in-alt"></i>
           <span class="nav-custom-link-text">Login</span>
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/cadastro.html" class="nav-custom-link">
+
+        <a href="./view/cadastro.php" class="nav-custom-link">
           <i class="fas fa-user-plus"></i>
           <span class="nav-custom-link-text">Cadastro</span>
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/cadastro.html" class="nav-custom-link">
+
+        <a href="./view/cadastro.php" class="nav-custom-link">
           <i class="fas fa-power-off"></i>
           <span class="nav-custom-link-text">Sair</span>
         </a>
@@ -87,12 +90,16 @@
               <i class="fab fa-app-store-ios mr-1"></i> App Store
             </button>
             <span class="mx-2 d-small-off">ou</span>
-            <a href="cadastro.html" class="btn btn-outline-dark d-small-off">
+
+            <a href="./view/cadastro.php" class="btn btn-outline-dark d-small-off">
+
               Cadastre - se
             </a>
           </div>
           <div class="col-md-6 col-sm-12 d-flex justify-content-center" id="image" data-aos="fade-right">
-            <img src="./assets/CelularCine.png" alt="">
+
+            <img src="../assets/CelularCine.png" alt="">
+
           </div>
         </div>
       </div>
@@ -102,159 +109,32 @@
 
     <!--Movies Cards-->
   <section class="filmes row align-items-center">
+
+
+    <?php foreach ($movieObject as $key => $movie): ?>
+
       <div class="col-md-3 col-sm-12">
-        <div class="card">
+        <div class="card" id="card-movie">
           <div class="card-header">
-            <strong>Deadpool 2</strong>
+            <strong><?=$movie->nome?></strong>
           </div>
           <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
+            <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
           </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
+          <img class="card-img" src=<?=$movie->foto ?> alt="Imagem do card">
           <div class="card-body d-flex">
             <span id="likes">
               <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
+                <i class="fas fa-thumbs-up"></i>
               </a>
             </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">
-              Ver mais</a>
+            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#filme">
+              Ver mais</button>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <strong>Deadpool 2</strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category">Comédia</a> <a href="" class="btn btn-info" id="category">Ação</a>
-          </div>
-          <img class="card-img" src="assets/banner.JPG" alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i> 32
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#movieModal">Ver mais</a>
-          </div>
-        </div>
-      </div>
+      <?php endforeach; ?>
+
     </section>
 
     <!--Plans Cards-->
@@ -263,7 +143,8 @@
 
     <div class="card-deck">
       <div class="card" id="card-plans" data-aos="fade-left">
-        <img class="card-img-top" src="./assets/harley.png">
+
+        <img class="card-img-top" src="../assets/harley.png">
         <div class="card-body card-plans">
           <h5 class="card-title">Plano Free</h5> <h4>Gratuito</h4>
           <p class="card-text"> O plano free não lhe oferece nenhum beneficio na plataforma</p>
@@ -279,7 +160,9 @@
         </div>
       </div>
       <div class="card" id="card-plans" data-aos="fade-up">
-        <img class="card-img-top" src="./assets/tchala.png">
+
+        <img class="card-img-top" src="../assets/tchala.png">
+
         <div class="card-body card-plans">
 
           <h5 class="card-title">Plano Hero</h5> <h4>R$ 18,00</h4>
@@ -295,7 +178,9 @@
         </div>
       </div>
       <div class="card" id="card-plans" data-aos="fade-right">
-        <img class="card-img-top" src="./assets/darth_vader.png">
+
+        <img class="card-img-top" src="../assets/darth_vader.png">
+
         <div class="card-body cad-plans">
           <h5 class="card-title">Plano Super Hero</h5> <h4>R$22,00</h4>
           <p class="card-text">Com o plano Super Hero, você tem acesso a tudo dos planos free e Hero</p>
@@ -415,25 +300,27 @@
   </div>
 
   <!--Modal ver mais movies-->
-  <div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="filme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-
     </div>
       <div class="modal-content">
       <div class="header-modal">
-        <a href="" class="logo-modal"><h3>DEADPOOL 2</h3></a>
-        <button type="button" data-dismiss="modal"><img src="./assets/toggle.png" alt=""></button>
+        <a href="" class="logo-modal"><h3><?=$movie->nome?></h3></a>
+        <button type="button" data-dismiss="modal"><img src="././assets/toggle.png" alt=""></button>
       </div>
       <div class="banner-modal">
+        <img src="./assets/sonic-banner.jpg" alt="">
         <div class="main-modal">
-          <h2>Deadpool agora tem sua propria equipe</h2>
-          <p>O supersoldado Cable vem do futuro com a missão de assassinar o jovem mutante Russel e o mercenário Deadpool precisa aprender o que é ser herói de verdade para salvá-lo. Para isso, ele recruta seu velho amigo Colossus e forma o novo grupo X-Force, sempre com o apoio do fiel escudeiro Dopinder.</p>
+          <h2></h2>
+          <p><?=$movie->sinopse ?></p>
+          <p>diretor: <?=$movie->diretor?></p>
           <a href="#" class="modal-play"><img src="./assets/play.png" alt="">Ver o Trailer</a>
         </div>
       </div>
     </div>
     <div class="trailer">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/a7t-avKlpkc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/zQEjE_M2Esw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <img src="./assets/close.png" class="modal-close" alt="">
     </div>
   </div>
