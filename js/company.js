@@ -34,7 +34,6 @@
     if (btnTwo.classList.contains('border-dark')||btnTree.classList.contains('border-dark')) {
       btnTwo.classList.remove('border-dark','clickEffect');
       btnTree.classList.remove('border-dark','clickEffect');
-
     }
   }
 

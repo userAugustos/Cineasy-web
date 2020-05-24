@@ -1,34 +1,20 @@
-
-<?php session_start(); include './controller/getMovies.php'?>
+<?php session_start(); ?>
 <html lang="pt-br">
 <head>
   <title>Cineasy</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
-
-  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
-
-  <link href="./node_modules/aos/dist/aos.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/default.css">
-  <link rel="stylesheet" href="./css/style.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-
-  <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-
+  <?php require_once './view/header.php'; ?>
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<?php require './controller/get.php'; ?>
 
+<body>
+  <?php
+  $get = new GetMetods();
+
+  $get->getMovie('/listaemalta/', 8);
+  ?>
   <!--Menu-->
   <nav class="navbar-custom">
     <ul class="navbar-nav-custom">
@@ -46,27 +32,36 @@
           <span class="nav-custom-link-text">Home</span>
         </a>
       </li>
+  <?php
+    if ((isset($_SESSION['status_log']))||(isset($_SESSION['status_register']))):
+  ?>
       <li class="nav-custom-item">
-        <a href="./view/login.php" class="nav-custom-link">
-          <i class="fas fa-sign-in-alt"></i>
-          <span class="nav-custom-link-text">Login</span>
+        <a href="./view/profile.php" class="nav-custom-link">
+          <i class="fas fa-user"></i>
+          <span class="nav-custom-link-text"><?=$_SESSION['user_name']?></span>
         </a>
       </li>
       <li class="nav-custom-item">
-
-        <a href="./view/cadastro.php" class="nav-custom-link">
-          <i class="fas fa-user-plus"></i>
-          <span class="nav-custom-link-text">Cadastro</span>
-        </a>
-      </li>
-      <li class="nav-custom-item">
-
-        <a href="./view/cadastro.php" class="nav-custom-link">
+        <a href="/" class="nav-custom-link">
           <i class="fas fa-power-off"></i>
           <span class="nav-custom-link-text">Sair</span>
         </a>
       </li>
+      <?php else :?>
+        <li class="nav-custom-item">
+          <a href="./view/login.php" class="nav-custom-link">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="nav-custom-link-text">Login</span>
+          </a>
+        </li>
+        <li class="nav-custom-item">
 
+          <a href="./view/cadastro.php" class="nav-custom-link">
+            <i class="fas fa-user-plus"></i>
+            <span class="nav-custom-link-text">Cadastro</span>
+          </a>
+        </li>
+    <?php endif;?>
     </ul>
   </nav>
 
@@ -111,7 +106,7 @@
   <section class="filmes row align-items-center">
 
 
-    <?php foreach ($movieObject as $key => $movie): ?>
+    <?php foreach ($get->movieObject as $key => $movie): ?>
 
       <div class="col-md-3 col-sm-12">
         <div class="card" id="card-movie">

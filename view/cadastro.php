@@ -1,34 +1,18 @@
 <?php session_start(); ?>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-	<title>Cineasy</title>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
-
-	<link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="../node_modules/animate.css/animate.min.css">
-
-	<!-- Custom CSS -->
+	<title>Cadastre-se</title>
+	<?php require_once './header.php'; ?>
 	<link rel="stylesheet" href="../css/default.css">
 	<link rel="stylesheet" href="../css/cadastro.css">
-
-	<link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-
 </head>
 <body>
-
 	<div class="limiter">
 		<div class="container-register">
 			<div class="register-image"></div>
 
 			<div class="register-content">
-				<form action="../controller/POST.php" class="register-form text-light animated fadeIn" method="post">
+				<form action="../controller/post.php" class="register-form text-light animated fadeIn" method="post">
 
 					<a href="/" class="text-light"><i class="fas fa-chevron-left"></i> Voltar</a>
 
@@ -48,9 +32,9 @@
 						<small class="form-text text-danger helperPassword"></small>
 					</div>
 					<div class="form-group mb-4">
-						<input type="tel" class="form-control" placeholder="Email" name="email">
+						<input type="tel" class="form-control" placeholder="Telefone" name="telefone">
 					</div>
-					<input type="submit" class="btn btn-outline-light btn-block" value="Cadastrar">
+					<input type="submit" name="cadastrar" class="btn btn-outline-light btn-block" value="Cadastrar">
 					<p class="d-flex justify-content-center my-3">
 						<hr class="bg-white">
 					</p>
@@ -71,9 +55,19 @@
 
 	<script src="../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 	<script src="../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+	<script src="../node_modules/alertifyjs/build/alertify.min.js" ></script>
 
 	<!-- Custom JS -->
 	<script src="../js/cadastro.js"></script>
 
+	<script type="text/javascript">
+		var status_register = "<?=$_SESSION['status_register']?>";
+
+		if (!status_register) {
+			  alertify.error('Impossivel validar as inforamções inseridas!', 2000);
+		}
+	</script>
+
 </body>
+	<?php unset($_SESSION['status_register']); ?>
 </html>

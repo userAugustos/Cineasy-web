@@ -5,16 +5,19 @@ a{
   outline: none;
 }
 body{
+  background: #fff;
   max-width: 100vw;
   overflow-x: hidden;
   font-size: 100%;
+  color: #000;
 }
 
 /*header stylesheet*/
 header{
+  background: #ebebeb;
   min-width: 100vw;
   width: 100vw;
-  height: 2.5rem;
+  height: 3rem;
 
   display: flex;
   flex-wrap: nowrap;
@@ -23,30 +26,34 @@ header{
 header a{
   cursor: pointer;
 }
-.acessDiv{
+.acess-div{
+  background: #fff;
   width: 32.4vw;
-  height: 100%;
+  height: 90%;
 
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  border-bottom-left-radius: -8px;
-  border-bottom-right-radius: -8px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
-
+.acess-div:hover{
+  transition-property: margin-top;
+  transition-duration: 0.4s;
+}
 /*content stylesheet*/
 main {
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
-  margin: 0;
+  padding: 1rem 1rem;
 }
 main .cadPost{
+  transition-property: all;
+  transition-duration: 1s;
   width: 95%;
   margin: 0 auto;
 
@@ -55,23 +62,58 @@ main .cadPost{
   align-items: center;
 }
 main .postForm{
-
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
-
 main .preview{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+}
+/*Cards */
+.card{
+	color: black;
+  min-width: 360px;
+  min-height: 400px;
 
-  margin-top: -6%;
+  max-width: 640px;
+  max-height: 1000px;
+}
+.card-body #likes{
+	margin-bottom: -3%;
+}
+#card-movie img{
+  min-width: 100%;
+	height: 400px !important;
+	max-height: 460px !important;
+}
+/*Estilização itens cards movies*/
+.preview .card-body{
+	justify-content: space-between;
+}
+#likes a{
+	color: black;
+}
+#category{
+	padding: 1px 6px !important;
+}
+.card-img-overlay {
+	top: 70%;
+	max-height: 80px;
+}
+.showMovies{
+  margin: 15px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.input-group-text {
-  font-weight: bolder;
-  background-color: #fff;
-}
+
 /*variables stylesheet*/
 .show {
   display: flex;
@@ -80,50 +122,7 @@ main .preview{
   display: none !important;
 }
 .clickEffect{
-  background: #ebebeb;
+  background: #fff;
   padding: 5px;
   margin: 5px 5px 0 5px;
-}
-/*Cards */
-.card{
-	color: black;
-  min-width: 360px;
-  min-height: 400px;
-  max-width: 640px;
-  max-height: 1000px;
-}
-.card-body #likes{
-	margin-bottom: -3%;
-}
-.card-deck {
-	margin: 1% 0 2% 0.01%;
-	max-width: 100%;
-}
-.card-body{
-	border-radius: 4px;
-	background-color: white;
-	color: black;
-}
-#card-movie img{
-  min-width: 100%;
-	height: 400px !important;
-	max-height: 460px !important;
-}
-/*Estilização itens cards movies*/
-.preview .card{
-	margin: 0 auto;
-}
-.preview .card-body{
-	justify-content: space-between;
-}
-#likes a{
-	color: black;
-}
-#category{
-	display: inline-flex !important;
-	padding: 1px 6px !important;
-}
-.card-img-overlay {
-	top: 70%;
-	max-height: 80px;
 }

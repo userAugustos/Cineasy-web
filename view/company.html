@@ -1,4 +1,10 @@
-<?php session_start(); $_SESSION['company_name'] = 'CineDev'?>
+<?php session_start();
+ // if (!$_SESSION['company_log']) {
+ //   header('Location: ../index.php');
+ //   exit();
+ // }
+ $_SESSION['company_name'] = 'CineDev';
+?>
 <html lang="pt-br">
 <head>
   <title><?=$_SESSION['company_name']?></title>
@@ -12,38 +18,46 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
 
   <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link href="../node_modules/aos/dist/aos.css" rel="stylesheet">
 
   <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/company-style.css">
 
   <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-
+  <?php include './controller/getMovies.php'?>
 </head>
 <body>
 
   <header>
   <a>
-    <div class="acessDiv user-select-none border border-bottom-0 border-dark clickEffect" id="showPainel">
+    <div class="acess-div user-select-none border border-bottom-0 border-dark clickEffect" id="showPainel">
       <strong>Criar Postagens</strong>
     </div>
   </a>
   <a>
-    <div class="acessDiv user-select-none border border-bottom-0"  id="showPosts">
+    <div class="acess-div user-select-none border border-bottom-0"  id="showPosts">
       <strong>Suas Postagens</strong>
     </div>
   </a>
 
   <a>
-    <div class="acessDiv user-select-none border border-bottom-0" id="showMovies">
+    <div class="acess-div user-select-none border border-bottom-0" id="showMovies">
       <strong>Seus Filmes</strong>
     </div>
   </a>
 
   </header>
 
-  <main>
+  <main data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+      data-aos-duration="500" data-aos-id="main">
+
     <div class="container-fluid show cadPost">
       <div class="postForm">
+        <!--Upload de filme-->
+      <div class="formMovie">
         <form class="text-center border border-light p-5" action="#!" method="post">
           <p class="h4 mb-4">Vamos Lançar esse Filme!!</p>
           <div class="form-row mb-4">
@@ -63,7 +77,7 @@
             <div class="col">
               <input type="number" id="movieTime" class="form-control" name="movieTime"placeholder="Tempo de duração" aria-describedby="minTime">
               <small id="minTime" class="form-text text-muted mb-4">
-                  em minutos! ex: 160min
+                  em minutos ex: 160min
               </small>
             </div>
             <div class="col">
@@ -87,6 +101,10 @@
           <p>Alguma duvida?
               <a href="" target="_blank">como fazer meu upload</a>
         </form>
+      </div>
+      <div class="formPost hide">
+        <p>Aqui você faz um post bro</p>
+      </div>
       </div>
 
       <div class="preview">
@@ -118,7 +136,34 @@
     </div>
 
     <div class="container-fluid hide showMovies">
-      <p>Aqui você vê os filmes que vc desponibiliza</p>
+      <section class="filmes row align-items-center">
+
+
+        <?php foreach ($movieObject as $key => $movie): ?>
+
+          <div class="col-md-3 col-sm-12">
+            <div class="card" id="card-movie">
+              <div class="card-header">
+                <strong><?=$movie->nome?></strong>
+              </div>
+              <div class="card-img-overlay">
+                <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
+              </div>
+              <img class="card-img" src=<?=$movie->foto ?> alt="Imagem do card">
+              <div class="card-body d-flex">
+                <span id="likes">
+                  <a href="#">
+                    <i class="fas fa-thumbs-up"></i>
+                  </a>
+                </span>
+                <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#filme">
+                  Ver mais</button>
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?>
+
+        </section>
     </div>
   </main>
 
@@ -130,6 +175,10 @@
 
   <script src="../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
+  <script src="../node_modules/aos/dist/aos.js" ></script>
+  <script>
+    AOS.init();
+  </script>
   <!-- Custom JS -->
   <script src="../js/company.js"></script>
 </body>

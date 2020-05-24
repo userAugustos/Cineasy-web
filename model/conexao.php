@@ -1,9 +1,16 @@
 <?php
-  require '../vendor/autoload.php';
+
+  require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 
   use GuzzleHttp\Client;
 
-  $Client = new Client([
-    'base_uri' => 'localhost:3000',
-  ]);
+  class Conexao{
+    public $api_url;
+
+    function __construct(){
+      $this->api_url = new Client([
+        'base_uri' => 'http://localhost:3000',
+      ]);
+    }
+  }
 ?>
