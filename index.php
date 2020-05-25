@@ -10,11 +10,19 @@
 <?php require './controller/get.php'; ?>
 
 <body>
-  <?php
+<?php
   $get = new GetMetods();
 
-  $get->getMovie('/listaemalta/', 8);
-  ?>
+  $get->getMovie('/listaemalta/', 8); //pegando cartaz
+  function logOut() {
+    unset($_SESSION['status_log']);
+    unset($_SESSION['status_register']);
+  }
+
+  if (isset($_GET['logout'])) {
+    logOut();
+  }
+?>
   <!--Menu-->
   <nav class="navbar-custom">
     <ul class="navbar-nav-custom">
@@ -32,9 +40,9 @@
           <span class="nav-custom-link-text">Home</span>
         </a>
       </li>
-  <?php
-    if ((isset($_SESSION['status_log']))||(isset($_SESSION['status_register']))):
-  ?>
+<?php
+  if ((isset($_SESSION['status_log']))||(isset($_SESSION['status_register']))):
+?>
       <li class="nav-custom-item">
         <a href="./view/profile.php" class="nav-custom-link">
           <i class="fas fa-user"></i>
@@ -42,12 +50,12 @@
         </a>
       </li>
       <li class="nav-custom-item">
-        <a href="/" class="nav-custom-link">
+        <a href="/?logout=true" class="nav-custom-link">
           <i class="fas fa-power-off"></i>
           <span class="nav-custom-link-text">Sair</span>
         </a>
       </li>
-      <?php else :?>
+<?php else :?>
         <li class="nav-custom-item">
           <a href="./view/login.php" class="nav-custom-link">
             <i class="fas fa-sign-in-alt"></i>
@@ -104,10 +112,7 @@
 
     <!--Movies Cards-->
   <section class="filmes row align-items-center">
-
-
-    <?php foreach ($get->movieObject as $key => $movie): ?>
-
+<?php foreach ($get->movieObject as $key => $movie): ?>
       <div class="col-md-3 col-sm-12">
         <div class="card" id="card-movie">
           <div class="card-header">
@@ -123,13 +128,12 @@
                 <i class="fas fa-thumbs-up"></i>
               </a>
             </span>
-            <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#filme">
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="<?='#movie'.$movie->id_films?>">
               Ver mais</button>
           </div>
         </div>
       </div>
-      <?php endforeach; ?>
-
+<?php endforeach; ?>
     </section>
 
     <!--Plans Cards-->
@@ -295,20 +299,24 @@
   </div>
 
   <!--Modal ver mais movies-->
-  <div class="modal fade" id="filme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php
+  foreach ($get->movieObject as $key => $movie):
+  $get->getDetalhes($movie->id_films);
+?>
+  <div class="modal fade" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
     <div class="modal-dialog" role="document">
     </div>
       <div class="modal-content">
       <div class="header-modal">
-        <a href="" class="logo-modal"><h3><?=$movie->nome?></h3></a>
+        <a href="/" class="logo-modal"><h3><?=$get->detalhes->nome?></h3></a>
         <button type="button" data-dismiss="modal"><img src="././assets/toggle.png" alt=""></button>
       </div>
       <div class="banner-modal">
         <img src="./assets/sonic-banner.jpg" alt="">
         <div class="main-modal">
           <h2></h2>
-          <p><?=$movie->sinopse ?></p>
-          <p>diretor: <?=$movie->diretor?></p>
+          <p><?=$get->detalhes->sinopse ?></p>
+          <p>diretor: <?=$get->detalhes->diretor?></p>
           <a href="#" class="modal-play"><img src="./assets/play.png" alt="">Ver o Trailer</a>
         </div>
       </div>
@@ -319,7 +327,7 @@
       <img src="./assets/close.png" class="modal-close" alt="">
     </div>
   </div>
-
+<?php endforeach; ?>
 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

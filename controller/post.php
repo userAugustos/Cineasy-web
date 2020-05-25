@@ -1,19 +1,19 @@
-<?php
-  session_start();
+<?php session_start();
+
   require_once($_SERVER["DOCUMENT_ROOT"] . '/model/conexao.php');
+
 
   use GuzzleHttp\Psr7;
   use GuzzleHttp\Exception\ClientException;
 
-  class PostMetods{
+  class PostMetods {
     private $url;
 
     function __construct(){
-        $con = new conexao();
-        $this->url = $con->api_url;
+      $con = new conexao();
+      $this->url = $con->api_url;
     }
 
-    //Registrando usuario
     function registerUser(){
       try {
         $response = $this->url->request('POST','/usuarios',
@@ -81,6 +81,7 @@
         exit();
       }
     }
+
     function logUser(){
       try {
         $response = $this->url->request('POST', '/usuarios/login', ['json' =>
@@ -89,15 +90,22 @@
             'senha' => $_POST['senha']
           ]
         ]);
+
+        $userinfo = json_decode($response->getBody()); //transformando o json em um objeto para que eu possa acessar um item especifico
+
+         $user_id = $userinfo->id;
+         $token = $userinfo->token;
+         $nome = $userinfo->nome;
       }
         catch (ClientException $e) {
-          Psr7\str($e->getRequest());
+          echo Psr7\str($e->getRequest());
           echo Psr7\str($e->getResponse());
           $error = true;
       }
       if (!$error) {
-        $_SESSION['user_name'] = $_POST['nome'];
         $_SESSION['status_log'] = true;
+        $_SESSION['user_name'] = $nome;
+        $_SESSION['user_id'] = $user_id;
         header('Location: ../');
         exit();
       }
@@ -107,37 +115,10 @@
         exit();
       }
     }
-
-    function resetPass(){
-      try {
-        $response = $this->url->request('PUT', '/updatepass', ['json' =>
-          [
-            'email' => $_POST['email']
-          ]
-        ]);
-
-      }
-      catch (ClientException $e) {
-        Psr7\str($e->getRequest());
-        echo Psr7\str($e->getResponse());
-        $error = true;
-      }
-      if (!$error) {
-        $_SESSION['reset_send'] = true;
-        header('Location: ../view/login.php');
-        exit();
-      }
-      else {
-        $_SESSION['reset_send'] = false;
-        header('Location: ../view/login.php');
-        exit();
-      }
-
-    }
   }
   $POST = new PostMetods();
 
-  switch (true) { //passo o true para que o switch seja acessado, nesse caso ao invés de definir uma variavel eu já seto que é true e ele deve ser inciado conferindo os cases
+  switch (true) {
     case isset($_POST['cadastrar']):
       $POST->registerUser();
       break;
