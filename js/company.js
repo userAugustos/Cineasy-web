@@ -13,9 +13,14 @@
   var movieName = document.querySelector('#movieName');
   var movieGenero = document.getElementById('movieGenero');
 
+  var previewPost = document.querySelector('.image-view img');
+  var filePost = document.querySelector('#post-image').files[0];
+
   //Events Listener
   pubPost.addEventListener('click', event => {
     togglePainel(cadPost, showPosts, showMovies, cadMovie);
+
+    // previewFile(previewPost, filePost);
   });
   showPost.addEventListener('click', event => {
     togglePainel(showPosts, cadPost, showMovies, cadMovie);
@@ -24,7 +29,7 @@
     togglePainel(showMovies, cadPost, showPosts, cadMovie);
   });
   pubMovie.addEventListener('click', event => {
-    togglePainel(cadMovie, showMovies, cadPost, showPosts)
+    togglePainel(cadMovie, showMovies, cadPost, showPosts);
   });
   //Funções
   function togglePainel(toShow, hideOne, hideTwo, hideTree) {
@@ -35,17 +40,17 @@
   }
 
   function previewFile() {
-    let preview = document.querySelector('.card img');
-    let file = document.querySelector('#moviePoster').files[0];
+    let previewMovie = document.querySelector('.card img');
+    let fileMovie = document.querySelector('#moviePoster').files[0];
     let reader = new FileReader();
 
-    reader.addEventListener('load', function () {
+    reader.addEventListener('load', function (){
       // convert image file to base64 string
-      preview.src = reader.result;
+      previewMovie.src = reader.result;
     }, false);
 
-    if (file) {
-      reader.readAsDataURL(file);
+    if (fileMovie) {
+      reader.readAsDataURL(fileMovie);
     }
   }
 
