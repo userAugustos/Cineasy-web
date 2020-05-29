@@ -1,40 +1,37 @@
 //company page
   //variaveis globais
-  var cadBtn = document.querySelector('#showPainel');
-  var postBtn = document.querySelector('#showPosts');
-  var movieBtn = document.querySelector('#showMovies');
+  var pubMovie = document.querySelector('#pubMovie');
+  var pubPost = document.querySelector('#pubPost');
+  var showPost = document.querySelector('#showPost');
+  var showMovie = document.querySelector('#showMovies');
 
   var cadPost = document.querySelector('.cadPost');
   var showPosts = document.querySelector('.showPosts');
   var showMovies = document.querySelector('.showMovies');
+  var cadMovie = document.querySelector('.cadMovie');
 
   var movieName = document.querySelector('#movieName');
   var movieGenero = document.getElementById('movieGenero');
 
   //Events Listener
-  cadBtn.addEventListener('click', event => {
-    togglePainel(cadPost, showPosts, showMovies, cadBtn, postBtn, movieBtn);
+  pubPost.addEventListener('click', event => {
+    togglePainel(cadPost, showPosts, showMovies, cadMovie);
   });
-  postBtn.addEventListener('click', event => {
-    togglePainel(showPosts, cadPost, showMovies, postBtn, cadBtn, movieBtn);
+  showPost.addEventListener('click', event => {
+    togglePainel(showPosts, cadPost, showMovies, cadMovie);
   });
-  movieBtn.addEventListener('click', event => {
-    togglePainel(showMovies, cadPost, showPosts, movieBtn, cadBtn, postBtn);
+  showMovie.addEventListener('click', event => {
+    togglePainel(showMovies, cadPost, showPosts, cadMovie);
   });
-
+  pubMovie.addEventListener('click', event => {
+    togglePainel(cadMovie, showMovies, cadPost, showPosts)
+  });
   //Funções
-  function togglePainel(toShow, toHide, anotherHide, btnOne, btnTwo, btnTree) {
+  function togglePainel(toShow, hideOne, hideTwo, hideTree) {
     toShow.classList.replace('hide','show');
-    if (!btnOne.classList.contains('border-dark')) {
-      btnOne.classList.add('border-dark','clickEffect');
-    }
-    toHide.classList.replace('show','hide');
-    anotherHide.classList.replace('show','hide');
-
-    if (btnTwo.classList.contains('border-dark')||btnTree.classList.contains('border-dark')) {
-      btnTwo.classList.remove('border-dark','clickEffect');
-      btnTree.classList.remove('border-dark','clickEffect');
-    }
+    hideOne.classList.replace('show','hide');
+    hideTwo.classList.replace('show','hide');
+    hideTree.classList.replace('show','hide');
   }
 
   function previewFile() {

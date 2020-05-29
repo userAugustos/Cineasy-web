@@ -302,21 +302,23 @@
 <?php
   foreach ($get->movieObject as $key => $movie):
   $get->getDetalhes($movie->id_films);
+  $info = $get->detalhes[0];
+
 ?>
   <div class="modal fade" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
     <div class="modal-dialog" role="document">
     </div>
       <div class="modal-content">
       <div class="header-modal">
-        <a href="/" class="logo-modal"><h3><?=$get->detalhes->nome?></h3></a>
+        <a href="/" class="logo-modal"><h3><?=$info['nome']?></h3></a>
         <button type="button" data-dismiss="modal"><img src="././assets/toggle.png" alt=""></button>
       </div>
       <div class="banner-modal">
         <img src="./assets/sonic-banner.jpg" alt="">
         <div class="main-modal">
           <h2></h2>
-          <p><?=$get->detalhes->sinopse ?></p>
-          <p>diretor: <?=$get->detalhes->diretor?></p>
+          <p><?=$info['sinopse']?></p>
+          <p>diretor: <?=$info['diretor']?></p>
           <a href="#" class="modal-play"><img src="./assets/play.png" alt="">Ver o Trailer</a>
         </div>
       </div>

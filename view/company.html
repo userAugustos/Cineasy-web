@@ -25,36 +25,61 @@
   <link rel="stylesheet" href="../css/company-style.css">
 
   <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-  <?php include './controller/getMovies.php'?>
+  <?php //include './controller/get.php'?>
 </head>
 <body>
 
   <header>
-  <a>
-    <div class="acess-div user-select-none border border-bottom-0 border-dark clickEffect" id="showPainel">
-      <strong>Criar Postagens</strong>
+      <div id="carousel-company" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="view">
+            <img class="d-block w-100" src="../assets/poublicacoes.png"
+              alt="First slide">
+            <div class="mask rgba-black-light"></div>
+          </div>
+          <div class="carousel-caption carousel-text-one">
+            <h3 class="h3-responsive">Crie suas publicações e coloque seus filmes em estreia</h3>
+            <strong>Aqui você tem acesso todas as possibilidades do Cineasy</strong>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="view">
+            <img class="d-block w-100" src="../assets/analise.png"
+              alt="Second slide">
+            <div class="mask rgba-black-strong"></div>
+          </div>
+          <div class="carousel-caption carousel-text-two">
+            <h3 class="h3-responsive">Acesse suas publicações e veja o feedback dos assinantes</h3>
+            <strong>Analise o alcance das suas publicações</strong>
+          </div>
+          <!-- <div class="carousel-caption carousel-button">
+          </div> -->
+        </div>
+        <div class="carousel-caption carousel-button">
+          <button type="button" name="pubMovie" id="pubMovie">Publicar Filme</button>
+          <button type="button" name="pubPost" id="pubPost">Fazer publicações</button>
+          <button type="button" name="showPost" id="showPost">Ver suas publicações</button>
+          <button type="button" name="showMovies" id="showMovies">Ver seus filmes</button>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel-company" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-company" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </a>
-  <a>
-    <div class="acess-div user-select-none border border-bottom-0"  id="showPosts">
-      <strong>Suas Postagens</strong>
-    </div>
-  </a>
-
-  <a>
-    <div class="acess-div user-select-none border border-bottom-0" id="showMovies">
-      <strong>Seus Filmes</strong>
-    </div>
-  </a>
-
   </header>
 
   <main data-aos="fade-zoom-in"
      data-aos-easing="ease-in-back"
      data-aos-delay="300"
       data-aos-duration="500" data-aos-id="main">
-
-    <div class="container-fluid show cadPost">
+    <!-- cadastro de filmes -->
+    <div class="container-fluid show cadMovie">
       <div class="postForm">
         <!--Upload de filme-->
       <div class="formMovie">
@@ -63,25 +88,51 @@
           <div class="form-row mb-4">
               <div class="col">
                   <!-- Nome do filme -->
-                  <input type="text" id="movieName" class="form-control" name="movieName" placeholder="Nome do Filme" onchange="previewCard()">
+                  <label for="movieName">Nome do Filme</label>
+                  <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewCard()">
               </div>
               <div class="col">
                   <!-- nome do Diretor -->
-                  <input type="text" id="directorName" class="form-control" name="directorName" placeholder="Nome do diretor">
+                  <label for="directorName">Diretor</label>
+                  <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: João Pindoia">
               </div>
           </div>
+          <div class="form-row mb-4">
+            <div class="col">
+              <label for="origem">Pais de origem</label>
+              <input type="text" name="origem" id="origem" class="form-control">
+            </div>
+            <div class="col">
+              <label for="dataEstreia">Data de Estreia</label>
+              <input type="date" id="dataEstreia" class="form-control" name="dataEstreta">
+            </div>
+          </div>
+          <div class="form-row mb-4">
+            <div class="col">
+              <label for="classificacao">Classificação indicativa</label>
+              <input type="number" name="classificacao" id="classificacao" class="form-control">
+              <small class="form-text text-muted mb-4">apenas a idade</small>
+            </div>
+            <div class="col">
+              <label for="destribuidora">Destribuidora</label>
+              <input type="text" id="destribuidora" class="form-control" name="destribuidora">
+            </div>
+          </div>
           <!-- Id filme -->
-          <input type="url" id="movieTrailer" class="form-control mb-4" name="movieTrailer" placeholder="Id do trailer">
+          <label for="movieTrailer" style="margin-left: -70%; margin-top: -40px;">Id do trailer</label>
+          <input type="url" id="movieTrailer" class="form-control mb-4" name="movieTrailer" placeholder="clique no '?' para saber como pegar o ID no youtube">
           <!-- Tempo de fime & imagem-->
           <div class="form-row mb-4">
             <div class="col">
-              <input type="number" id="movieTime" class="form-control" name="movieTime"placeholder="Tempo de duração" aria-describedby="minTime">
+              <label for="movieTime">Tempo de duração</label>
+              <input type="number" id="movieTime" class="form-control" name="movieTime" aria-describedby="minTime">
               <small id="minTime" class="form-text text-muted mb-4">
                   em minutos ex: 160min
               </small>
             </div>
             <div class="col">
-              <input type="text" id="movieGenero" name="movieGenero" class="form-control" placeholder="Genero" onchange="previewCard()">
+              <label for="movieGenero" style="margin-left: -10%;">Genero</label>
+              <input type="text" id="movieGenero" name="movieGenero" class="form-control" onchange="previewCard()">
             </div>
           </div>
           <div class="d-flex" style="margin: -25px auto 0 auto">
@@ -93,6 +144,7 @@
             <input type="file" class="form-control-file" id="movieBanner" name="movieBanner">
           </div>
           <!-- Sinopse -->
+          <label for="movieSinopse" style="margin-left: -80%;">Sinopse</label>
           <textarea class="form-control" rows="4" cols="50" id="movieSinopse" name="movieSinopse" style="resize:none;"></textarea>
           <!-- register movie up button -->
           <button class="btn btn-warning my-4 btn-block" type="submit">Anunciar Filme</button>
@@ -101,9 +153,6 @@
           <p>Alguma duvida?
               <a href="" target="_blank">como fazer meu upload</a>
         </form>
-      </div>
-      <div class="formPost hide">
-        <p>Aqui você faz um post bro</p>
       </div>
       </div>
 
@@ -121,7 +170,9 @@
             <div class="card-body d-flex">
               <span id="likes">
                 <a href="#">
-                  <i class="fas fa-thumbs-up"></i> Likes
+                  <i class="fas fa-thumbs-up" style="color: blue;">
+                  </i>
+                  0
                 </a>
               </span>
               <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#filme"> Ver mais </button>
@@ -130,17 +181,45 @@
         </div>
       </div>
     </div>
+      <!-- cadastro de publicações -->
+    <div class="container-fluid hide cadPost">
+      <div class="postForm">
+        <form class="text-center border border-light p-5" action="#!" method="post">
+          <p class="h4 mb-4">O que !!</p>
+          <div class="form-row mb-4">
+              <div class="col">
+                  <!-- Nome do filme -->
+                  <label for="movieName">Nome do Filme</label>
+                  <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewCard()">
+              </div>
+              <div class="col">
+                  <!-- nome do Diretor -->
+                  <label for="directorName">Diretor</label>
+                  <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: João Pindoia">
+              </div>
+          </div>
+      </div>
 
+      <div class="preview">
+        <div class="title">
+          <strong></strong>
+        </div>
+        <div class="image-view">
+
+        </div>
+        <div class="content">
+
+        </div>
+      </div>
+    </div>
+      <!-- ver publicações -->
     <div class="container-fluid hide showPosts">
 
     </div>
 
     <div class="container-fluid hide showMovies">
       <section class="filmes row align-items-center">
-
-
         <?php foreach ($movieObject as $key => $movie): ?>
-
           <div class="col-md-3 col-sm-12">
             <div class="card" id="card-movie">
               <div class="card-header">
@@ -162,7 +241,6 @@
             </div>
           </div>
           <?php endforeach; ?>
-
         </section>
     </div>
   </main>
