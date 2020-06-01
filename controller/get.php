@@ -18,7 +18,9 @@
     function getDetalhes($id){
       $response = $this->url->request('GET', 'filmes/detalhes/' . $id);
 
-      $this->detalhes = json_decode($response->getBody(), true);
+      $this->detalhes = $response->getBody();
+
+      echo $this->detalhes;
     }
     function getMovie($movieType, $qtd){
       $response = $this->url->request('GET', '/filmes'. $movieType .$qtd);
@@ -37,5 +39,8 @@
       $this->userObject;
     }
   }
-
+  $get = new GetMetods();
+  if (isset($_POST['ver_mais'])) {
+    $get->getDetalhes($_POST['id_movie']);
+  }
 ?>

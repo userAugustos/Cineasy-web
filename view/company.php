@@ -25,10 +25,14 @@
   <link rel="stylesheet" href="../css/company-style.css">
 
   <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
-  <?php //include './controller/get.php'?>
+  <?php include '../controller/get.php'?>
 </head>
 <body>
+<?php
+  $get = new GetMetods();
 
+  $get->getMovie('/listaemalta/', 4);
+?>
   <header>
       <div id="carousel-company" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
@@ -222,7 +226,7 @@
 
     <div class="container-fluid hide showMovies">
       <section class="filmes row align-items-center">
-        <?php foreach ($movieObject as $key => $movie): ?>
+        <?php foreach ($get->movieObject as $key => $movie): ?>
           <div class="col-md-3 col-sm-12">
             <div class="card" id="card-movie">
               <div class="card-header">
@@ -231,14 +235,14 @@
               <div class="card-img-overlay">
                 <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
               </div>
-              <img class="card-img" src=<?=$movie->foto ?> alt="Imagem do card">
+              <img class="card-img" src=<?=$movie->foto?> alt="Imagem do card">
               <div class="card-body d-flex">
                 <span id="likes">
                   <a href="#">
                     <i class="fas fa-thumbs-up"></i>
                   </a>
                 </span>
-                <button type="button" class="btn btn-outline-danger"data-toggle="modal" data-target="#filme">
+                <button type="button" onclick="falaAe(<?=$movie->id_films?>)" class="btn btn-outline-danger" data-toggle="modal" data-target="<?='#movie'.$movie->id_films?>">
                   Ver mais</button>
               </div>
             </div>
@@ -247,8 +251,15 @@
         </section>
     </div>
   </main>
+  <!-- modal -->
+  <?php foreach ($get->movieObject as $key => $movie): ?>
 
+  <div class="modal fade movie" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      </div>
+  </div>
 
+<?php endforeach; ?>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/popper.js/dist/popper.min.js"></script>
@@ -258,6 +269,7 @@
 
   <script src="../node_modules/aos/dist/aos.js" ></script>
   <script>
+    var id = <?=$movie->id_films?>;
     AOS.init();
   </script>
   <!-- Custom JS -->

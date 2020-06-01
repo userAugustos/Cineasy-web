@@ -9,48 +9,57 @@
   var showPosts = document.querySelector('.showPosts');
   var showMovies = document.querySelector('.showMovies');
   var cadMovie = document.querySelector('.cadMovie');
-
+  var btnShowMore = document.querySelector('.card-body button');
   var movieName = document.querySelector('#movieName');
   var movieGenero = document.getElementById('movieGenero');
-
+  var modal = document.querySelector('.movie');
+  modal.innerHTML = 'carregando....';
   var previewPost = document.querySelector('.image-view img');
   var filePost = document.querySelector('#post-image').files[0];
 
   //Events Listener
   pubPost.addEventListener('click', event => {
-    togglePainel(cadPost, showPosts, showMovies, cadMovie);
-
-    // previewFile(previewPost, filePost);
+    let esconde = [showPosts, showMovies, cadMovie];
+    togglePainel(cadPost, ...esconde);
   });
   showPost.addEventListener('click', event => {
-    togglePainel(showPosts, cadPost, showMovies, cadMovie);
+    let esconde = [cadPost, showMovies, cadMovie];
+    togglePainel(showPosts, ...esconde);
   });
   showMovie.addEventListener('click', event => {
-    togglePainel(showMovies, cadPost, showPosts, cadMovie);
+    let esconde = [cadPost,  showPosts, cadMovie];
+    togglePainel(showMovies, ...esconde);
   });
   pubMovie.addEventListener('click', event => {
-    togglePainel(cadMovie, showMovies, cadPost, showPosts);
+    let esconde = [cadPost, showMovies, showPosts];
+    togglePainel(cadMovie, ...esconde);
   });
+  btnShowMore.addEventListener('click', event => {
+
+
+    /**/
+  });
+
   //Funções
-  function togglePainel(toShow, hideOne, hideTwo, hideTree) {
+  function togglePainel(toShow, ...esconde) {
     toShow.classList.replace('hide','show');
-    hideOne.classList.replace('show','hide');
-    hideTwo.classList.replace('show','hide');
-    hideTree.classList.replace('show','hide');
+    esconde.map(item => {
+      return item.classList.replace('show','hide');
+    });
   }
 
   function previewFile() {
-    let previewMovie = document.querySelector('.card img');
-    let fileMovie = document.querySelector('#moviePoster').files[0];
+    let preview = document.querySelector('.card img');
+    let file = document.querySelector('#moviePoster').files[0];
     let reader = new FileReader();
 
-    reader.addEventListener('load', function (){
+    reader.addEventListener('load', () => {
       // convert image file to base64 string
-      previewMovie.src = reader.result;
+      preview.src = reader.result;
     }, false);
 
-    if (fileMovie) {
-      reader.readAsDataURL(fileMovie);
+    if (file) {
+      reader.readAsDataURL(file);
     }
   }
 
@@ -60,4 +69,34 @@
 
     titulo.innerHTML = movieName.value;
     genero.innerHTML = movieGenero.value;
+  }
+
+  function falaAe(id) {
+    console.log(id);
+
+    $.post( "../controller/get.php",
+    { ver_mais: "1", id_movie: `${id}` } ).done(function( response ) {
+      let movieInfo = JSON.parse(response);
+        try {
+          modal.innerHTML = `<div class="modal-content">
+              <div class="header-modal">
+                <a href="/" class="logo-modal"><h3>${movieInfo[0].nome}</h3></a>
+                  <button type="button" data-dismiss="modal"><img src="../assets/toggle.png" alt=""></button>
+              </div>
+              <div class="banner-modal">
+                <img src="../assets/sonic-banner.jpg" alt="">
+                  <div class="main-modal">
+                    <h2></h2>
+                      <p>${movieInfo[0].sinopse}</p>
+                      <p>diretor: ${movieInfo[0].diretor}</p>
+                      <a href="#" class="modal-play"><img src="../assets/play.png" alt="">Ver o Trailer</a>
+                      </div>
+                  </div>
+              </div>`
+        }catch (error) {
+          console.log(`o problema é ${error}`)
+        }
+    }).fail(function(err) {
+      console.log( "error" + err );
+    });
   }
