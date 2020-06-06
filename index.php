@@ -14,6 +14,7 @@
   $get = new GetMetods();
 
   $get->getMovie('/listaemalta/', 8); //pegando cartaz
+  
   function logOut() {
     unset($_SESSION['status_log']);
     unset($_SESSION['status_register']);
@@ -69,7 +70,7 @@
             <span class="nav-custom-link-text">Cadastro</span>
           </a>
         </li>
-    <?php endif;?>
+<?php endif;?>
     </ul>
   </nav>
 
@@ -113,26 +114,32 @@
     <!--Movies Cards-->
   <section class="filmes row align-items-center">
 <?php foreach ($get->movieObject as $key => $movie): ?>
-      <div class="col-md-3 col-sm-12">
-        <div class="card" id="card-movie">
-          <div class="card-header">
-            <strong><?=$movie->nome?></strong>
-          </div>
-          <div class="card-img-overlay">
-            <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
-          </div>
-          <img class="card-img" src=<?=$movie->foto ?> alt="Imagem do card">
-          <div class="card-body d-flex">
-            <span id="likes">
-              <a href="#">
-                <i class="fas fa-thumbs-up"></i>
-              </a>
-            </span>
-            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="<?='#movie'.$movie->id_films?>">
-              Ver mais</button>
-          </div>
-        </div>
+  <div class="col-md-3 col-sm-12">
+    <div class="card" id="card-movie">
+      <div class="card-header">
+      	<strong><?=$movie->nome?></strong>
       </div>
+      <div class="card-img-overlay">
+        <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
+      </div>
+      <img class="card-img" alt="Imagem do card" src=<?=$movie->foto?> >
+      <div class="card-body d-flex">
+       	<span id="likes">
+          <a href="#">
+          	<i class="fas fa-thumbs-up"></i>
+          </a>
+        </span>
+        <button 
+        	type="button" 
+        	onclick="insertMovie(<?=$movie->id_films?>)" 
+        	class="btn btn-outline-danger" 
+        	data-toggle="modal" 
+        	data-target="<?='#movie'.$movie->id_films?>">
+            Ver mais
+        </button>
+      </div>
+    </div>
+ 	</div>
 <?php endforeach; ?>
     </section>
 
@@ -299,36 +306,13 @@
   </div>
 
   <!--Modal ver mais movies-->
-<?php
-  foreach ($get->movieObject as $key => $movie):
-  $get->getDetalhes($movie->id_films);
-  $info = $get->detalhes[0];
+<?php foreach ($get->movieObject as $key => $movie): ?>
 
-?>
-  <div class="modal fade" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
+  <div class="modal fade movie<?=$movie->id_films?>" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
     <div class="modal-dialog" role="document">
-    </div>
-      <div class="modal-content">
-      <div class="header-modal">
-        <a href="/" class="logo-modal"><h3><?=$info['nome']?></h3></a>
-        <button type="button" data-dismiss="modal"><img src="././assets/toggle.png" alt=""></button>
       </div>
-      <div class="banner-modal">
-        <img src="./assets/sonic-banner.jpg" alt="">
-        <div class="main-modal">
-          <h2></h2>
-          <p><?=$info['sinopse']?></p>
-          <p>diretor: <?=$info['diretor']?></p>
-          <a href="#" class="modal-play"><img src="./assets/play.png" alt="">Ver o Trailer</a>
-        </div>
-      </div>
-    </div>
-    <div class="trailer">
-
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/zQEjE_M2Esw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <img src="./assets/close.png" class="modal-close" alt="">
-    </div>
   </div>
+
 <?php endforeach; ?>
 
 

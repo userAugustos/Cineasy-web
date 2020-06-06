@@ -235,14 +235,14 @@
               <div class="card-img-overlay">
                 <a href="" class="btn btn-info" id="category"><?=$movie->genero ?></a>
               </div>
-              <img class="card-img" src=<?=$movie->foto?> alt="Imagem do card">
+              <img class="card-img" alt="Imagem do card" src=<?=$movie->foto?> >
               <div class="card-body d-flex">
                 <span id="likes">
                   <a href="#">
                     <i class="fas fa-thumbs-up"></i>
                   </a>
                 </span>
-                <button type="button" onclick="falaAe(<?=$movie->id_films?>)" class="btn btn-outline-danger" data-toggle="modal" data-target="<?='#movie'.$movie->id_films?>">
+                <button type="button" onclick="insertMovie(<?=$movie->id_films?>)" class="btn btn-outline-danger" data-toggle="modal" data-target="<?='#movie'.$movie->id_films?>">
                   Ver mais</button>
               </div>
             </div>
@@ -254,12 +254,13 @@
   <!-- modal -->
   <?php foreach ($get->movieObject as $key => $movie): ?>
 
-  <div class="modal fade movie" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
+  <div class="modal fade movie<?=$movie->id_films?>" id="<?='movie'.$movie->id_films?>" tabindex="-1" role="dialog" aria-labelledby="Modalmovie" aria-hidden="true">
     <div class="modal-dialog" role="document">
       </div>
   </div>
 
 <?php endforeach; ?>
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/popper.js/dist/popper.min.js"></script>
