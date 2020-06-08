@@ -27,7 +27,6 @@
     let reader = new FileReader();
 
     reader.addEventListener('load', () => {
-      // convert image file to base64 string
       preview.src = reader.result;
     }, false);
 

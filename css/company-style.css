@@ -174,8 +174,8 @@ main .preview{
 	max-height: 80px;
 }
 .showMovies{
-  margin: 15px 0;
-  width: 100%;
+  margin: 15px 0 15px -2rem !important;
+  width: 100vw !important;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -31,7 +31,7 @@
 <?php
   $get = new GetMetods();
 
-  $get->getMovie('/listaemalta/', 4);
+  $get->getMovie('/listaemalta/', 8);
 ?>
   <header>
       <div id="carousel-company" class="carousel slide carousel-fade" data-ride="carousel">
@@ -86,78 +86,78 @@
     <div class="container-fluid show cadMovie">
       <div class="postForm">
         <!--Upload de filme-->
-      <div class="formMovie">
-        <form class="text-center border border-light p-5" action="#!" method="post">
-          <p class="h4 mb-4">Vamos Lançar esse Filme!!</p>
-          <div class="form-row mb-4">
-              <div class="col">
-                  <!-- Nome do filme -->
-                  <label for="movieName">Nome do Filme</label>
-                  <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewCard()">
-              </div>
-              <div class="col">
-                  <!-- nome do Diretor -->
-                  <label for="directorName">Diretor</label>
-                  <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: João Pindoia">
-              </div>
-          </div>
-          <div class="form-row mb-4">
-            <div class="col">
-              <label for="origem">Pais de origem</label>
-              <input type="text" name="origem" id="origem" class="form-control">
-            </div>
-            <div class="col">
-              <label for="dataEstreia">Data de Estreia</label>
-              <input type="date" id="dataEstreia" class="form-control" name="dataEstreta">
-            </div>
-          </div>
-          <div class="form-row mb-4">
-            <div class="col">
-              <label for="classificacao">Classificação indicativa</label>
-              <input type="number" name="classificacao" id="classificacao" class="form-control">
-              <small class="form-text text-muted mb-4">apenas a idade</small>
-            </div>
-            <div class="col">
-              <label for="destribuidora">Destribuidora</label>
-              <input type="text" id="destribuidora" class="form-control" name="destribuidora">
-            </div>
-          </div>
-          <!-- Id filme -->
-          <label for="movieTrailer" style="margin-left: -70%; margin-top: -40px;">Id do trailer</label>
-          <input type="url" id="movieTrailer" class="form-control mb-4" name="movieTrailer" placeholder="clique no '?' para saber como pegar o ID no youtube">
-          <!-- Tempo de fime & imagem-->
-          <div class="form-row mb-4">
-            <div class="col">
-              <label for="movieTime">Tempo de duração</label>
-              <input type="number" id="movieTime" class="form-control" name="movieTime" aria-describedby="minTime">
-              <small id="minTime" class="form-text text-muted mb-4">
-                  em minutos ex: 160min
-              </small>
-            </div>
-            <div class="col">
-              <label for="movieGenero" style="margin-left: -10%;">Genero</label>
-              <input type="text" id="movieGenero" name="movieGenero" class="form-control" onchange="previewCard()">
-            </div>
-          </div>
-          <div class="d-flex" style="margin: -25px auto 0 auto">
-            <label for="" style="margin: auto 5px">Poster</label>
-            <input type="file" class="form-control-file" id="moviePoster" onchange="previewFile()" name="moviePoster">
-          </div>
-          <div class="d-flex" style="margin: 10px 0">
-            <label for="" style="margin: auto 5px">Banner</label>
-            <input type="file" class="form-control-file" id="movieBanner" name="movieBanner">
-          </div>
-          <!-- Sinopse -->
-          <label for="movieSinopse" style="margin-left: -80%;">Sinopse</label>
-          <textarea class="form-control" rows="4" cols="50" id="movieSinopse" name="movieSinopse" style="resize:none;"></textarea>
-          <!-- register movie up button -->
-          <button class="btn btn-warning my-4 btn-block" type="submit">Anunciar Filme</button>
-          <hr>
-          <!-- Helper -->
-          <p>Alguma duvida?
-              <a href="" target="_blank">como fazer meu upload</a>
-        </form>
-      </div>
+	      <div class="formMovie">
+	        <form class="text-center border border-light p-5" action="#!" method="post">
+	          <p class="h4 mb-4">Vamos Lançar esse Filme!!</p>
+	          <div class="form-row mb-4">
+	            <div class="col">
+	              <!-- Nome do filme -->
+	              <label for="movieName">Nome do Filme</label>
+	              <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewCard()">
+	            </div>
+	            <div class="col">
+	               <!-- nome do Diretor -->
+	              <label for="directorName">Diretor</label>
+	              <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: João Pindoia">
+	            </div>
+	          </div>
+	          <div class="form-row mb-4">
+	            <div class="col">
+	              <label for="origem">Pais de origem</label>
+	              <input type="text" name="origem" id="origem" class="form-control">
+	            </div>
+	            <div class="col">
+	              <label for="dataEstreia">Data de Estreia</label>
+	              <input type="date" id="dataEstreia" class="form-control" name="dataEstreta">
+	            </div>
+	          </div>
+	          <div class="form-row mb-4">
+	            <div class="col">
+	              <label for="classificacao">Classificação indicativa</label>
+	              <input type="number" name="classificacao" id="classificacao" class="form-control">
+	              <small class="form-text text-muted mb-4">apenas a idade</small>
+	            </div>
+	            <div class="col">
+	              <label for="destribuidora">Destribuidora</label>
+	              <input type="text" id="destribuidora" class="form-control" name="destribuidora">
+	            </div>
+	          </div>
+	          <!-- Id filme -->
+	          <label for="movieTrailer" style="margin-left: -70%; margin-top: -40px;">Id do trailer</label>
+	          <input type="url" id="movieTrailer" class="form-control mb-4" name="movieTrailer" placeholder="clique no '?' para saber como pegar o ID no youtube">
+	          <!-- Tempo de fime & imagem-->
+	          <div class="form-row mb-4">
+	            <div class="col">
+	              <label for="movieTime">Tempo de duração</label>
+	              <input type="number" id="movieTime" class="form-control" name="movieTime" aria-describedby="minTime">
+	              <small id="minTime" class="form-text text-muted mb-4">
+	                  em minutos ex: 160min
+	              </small>
+	            </div>
+	            <div class="col">
+	              <label for="movieGenero" style="margin-left: -10%;">Genero</label>
+	              <input type="text" id="movieGenero" name="movieGenero" class="form-control" onchange="previewCard()">
+	            </div>
+	          </div>
+	          <div class="d-flex" style="margin: -25px auto 0 auto">
+	            <label for="" style="margin: auto 5px">Poster</label>
+	            <input type="file" class="form-control-file" id="moviePoster" onchange="previewFile()" name="moviePoster">
+	          </div>
+	          <div class="d-flex" style="margin: 10px 0">
+	            <label for="" style="margin: auto 5px">Banner</label>
+	            <input type="file" class="form-control-file" id="movieBanner" name="movieBanner">
+	          </div>
+	          <!-- Sinopse -->
+	          <label for="movieSinopse" style="margin-left: -80%;">Sinopse</label>
+	          <textarea class="form-control" rows="4" cols="50" id="movieSinopse" name="movieSinopse" style="resize:none;"></textarea>
+	          <!-- register movie up button -->
+	          <button class="btn btn-warning my-4 btn-block" type="submit">Anunciar Filme</button>
+	          <hr>
+	          <!-- Helper -->
+	          <p>Alguma duvida?
+	              <a href="" target="_blank">como fazer meu upload</a>
+	        </form>
+	      </div>
       </div>
 
       <div class="preview">
