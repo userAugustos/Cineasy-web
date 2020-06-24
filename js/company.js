@@ -1,23 +1,11 @@
- var pubMovie = document.querySelector('#pubMovie');
- var pubPost = document.querySelector('#pubPost');
- var showPost = document.querySelector('#showPost');
- var showMovie = document.querySelector('#showMovies');
 
- var cadPost = document.querySelector('.cadPost');
- var showPosts = document.querySelector('.showPosts');
- var showMovies = document.querySelector('.showMovies');
- var cadMovie = document.querySelector('.cadMovie');
- var movieName = document.querySelector('#movieName');
- var movieGenero = document.getElementById('movieGenero');
+//  var previewPost = document.querySelector('.image-view img');
+//  var filePost = document.querySelector('#post-image').files[0];
 
- var previewPost = document.querySelector('.image-view img');
- var filePost = document.querySelector('#post-image').files[0];
-
-  //Funções
   function togglePainel(toShow, ...esconde) {
-    toShow.classList.replace('hide','show');
+    toShow.addClass('visible').removeClass('hidden');
     esconde.map(item => {
-      return item.classList.replace('show','hide');
+     return item.addClass('hidden').removeClass('visible');
     });
   }
 
@@ -70,19 +58,80 @@
     });
   }
 
-  pubPost.addEventListener('click', event => {
-    let esconde = [showPosts, showMovies, cadMovie];
-    togglePainel(cadPost, ...esconde);
-  });
-  showPost.addEventListener('click', event => {
-    let esconde = [cadPost, showMovies, cadMovie];
-    togglePainel(showPosts, ...esconde);
-  });
-  showMovie.addEventListener('click', event => {
-    let esconde = [cadPost,  showPosts, cadMovie];
-    togglePainel(showMovies, ...esconde);
-  });
-  pubMovie.addEventListener('click', event => {
-    let esconde = [cadPost, showMovies, showPosts];
-    togglePainel(cadMovie, ...esconde);
-  });
+  ( $ => {
+    "use strict";
+  
+    const fullHeight = () => {
+      $('.js-fullheight').css('height', $(window).height());
+      $(window).resize(function(){
+        $('.js-fullheight').css('height', $(window).height());
+      });
+    };
+  
+    fullHeight();
+  
+    $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+    });
+  
+    //show company profile 
+    $('#company-profile').on('click', event => {
+      let esconde = [
+        $('.pub-filme'),
+        $('.pub-post'),
+        $('.show-movies'),
+        $('.show-posts')
+      ];
+      let show = $('.company-profile');
+      togglePainel(show, ...esconde);
+    });
+  
+    //show movie publication
+    $('#pub-filme').on('click', event => {
+      let esconde = [
+        $('.company-profile'),
+        $('.pub-post'),
+        $('.show-movies'),
+        $('.show-posts')
+      ];
+      let show = $('.pub-filme');
+      togglePainel(show, ...esconde);
+    });
+  
+    //show post publication
+    $('#pub-post').on('click', event => {
+      let esconde = [
+        $('.company-profile'),
+        $('.pub-filme'),
+        $('.show-movies'),
+        $('.show-posts')
+      ];
+      let show = $('.pub-post');
+      togglePainel(show, ...esconde);
+    });
+  
+    //show publicated movies
+    $('#show-movies').on('click', event => {
+      let esconde = [
+        $('.company-profile'),
+        $('.pub-filme'),
+        $('.show-posts'),
+        $('.pub-post')
+      ];
+      let show = $('.show-movies');
+      togglePainel(show, ...esconde);
+    });
+  
+    //show publicated posts
+    $('#show-posts').on('click', event => {
+      let esconde = [
+        $('.company-profile'),
+        $('.pub-filme'),
+        $('.show-movies'),
+        $('.pub-post')
+      ];
+      let show = $('.show-posts');
+      togglePainel(show, ...esconde);
+    });
+  
+  })(jQuery);

@@ -7,6 +7,14 @@ function verSenha() {
   }
 }
 
+function toggleForm(toShow, toHide){
+  toShow.removeClass('hide');
+  toShow.addClass('show');
+
+  toHide.removeClass('show');
+  toHide.addClass('hide');
+}
+
 $(".inputSenha").keyup(() => {
   var tamanho = $('.inputSenha').val().length;
   if (tamanho < 8 || tamanho > 14) {
@@ -19,4 +27,15 @@ $(".inputSenha").keyup(() => {
     $(".helperPassword").html(null)
     $(".form-group-password").addClass('mb-4')
   }
+});
+
+$('#log-as-company').on('click', () => {
+  let user = $('#user');
+  let company = $('#company');
+  toggleForm(company, user)
+})
+$('#log-as-user').on('click', () => {
+  let user = $('#user');
+  let company = $('#company');
+  toggleForm(user, company)
 });

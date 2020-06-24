@@ -49,14 +49,8 @@
     </div>
   </div>
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/popper.js/dist/popper.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-  <script src="../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
-  <script src="../node_modules/alertifyjs/build/alertify.min.js" ></script>
-
+  <?php require_once '../view/footer.php'?>
+  
   <!-- Custom JS -->
   <script src="../js/login.js"></script>
 

@@ -39,6 +39,7 @@
       $this->userObject;
     }
   }
+  
   $get = new GetMetods();
   if (isset($_POST['ver_mais'])) {
     $get->getDetalhes($_POST['id_movie']);
