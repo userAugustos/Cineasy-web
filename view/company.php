@@ -72,11 +72,11 @@ $_SESSION['company_name'] = 'CineDev';
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
-          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#togglePageNavbar" aria-controls="togglePageNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="togglePageNavbar">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
@@ -98,7 +98,7 @@ $_SESSION['company_name'] = 'CineDev';
               <div class="col">
                 <!-- Nome do filme -->
                 <label for="movieName">Nome do Filme</label>
-                <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewCard()">
+                <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewMovie()">
               </div>
               <div class="col">
                 <!-- nome do Diretor -->
@@ -141,12 +141,12 @@ $_SESSION['company_name'] = 'CineDev';
               </div>
               <div class="col">
                 <label for="movieGenero" style="margin-left: -10%;">Genero</label>
-                <input type="text" id="movieGenero" name="movieGenero" class="form-control" onchange="previewCard()">
+                <input type="text" id="movieGenero" name="movieGenero" class="form-control" onchange="previewMovie()">
               </div>
             </div>
             <div class="d-flex" style="margin: -25px auto 0 auto">
               <label for="" style="margin: auto 5px">Poster</label>
-              <input type="file" class="form-control-file" id="moviePoster" onchange="previewFile()" name="moviePoster">
+              <input type="file" class="form-control-file" id="moviePoster" onchange="previewMovie()" name="moviePoster">
             </div>
             <div class="d-flex" style="margin: 10px 0">
               <label for="" style="margin: auto 5px">Banner</label>
@@ -190,7 +190,37 @@ $_SESSION['company_name'] = 'CineDev';
         </div>
       </div>
       <div class="pub-post hidden">
-        <p>publicar post</p>
+        <div class="postForm">
+          <form class="text-center p-5" action="#!" method="post">
+            <p class="h4 mb-4" style="margin: -20px 0 0 0">Cire publicações para engajar sua comunidade</p>
+            <div class="form-row mb-4">
+              <div class="col d-block">
+                <!-- Texto da publicação -->
+                <label for="post-text" style="margin: 0 15px 0 -22rem">Texto da publicação</label><br>
+                <textarea name="post-text" rows="3" cols="50" style="resize:none;" onchange="previewPost()"></textarea>
+              </div>
+            </div>
+            <div class="" style="margin: 25px auto 0 auto">
+              <label for="post-image" style="margin: 0 10px 0 -20rem">Imagem da publicação</label>
+              <input type="file" class="form-control-file" id="post-image" onchange="previewPost()" name="post-iamge">
+            </div>
+          </form>
+        </div>
+
+        <div class="preview-publicacao">
+          <div class="title">
+            <img src="../assets/avatar.svg" alt="" id="icon">
+            <strong class=""></strong>
+          </div>
+          <div class="image-view">
+            <img src="../assets/mulan-banner.jpg" alt="">
+          </div>
+          <div class="content">
+            <div><i class="fas fa-thumbs-up" style="color: #f2dd3d;"></i><small style="color: #fff;">Curtidas</small></div>
+            <div><i class="fas fa-comment" style="color:#f2dd3d"></i><small style="color: #fff;">Comentarios</small></div>
+            <div><small style="color: #fff;">0</small><small style="color: #fff;">vizualizações</small></div>
+          </div>
+        </div>
       </div>
       <div class="show-movies hidden">
         <p>Ver meus filmes</p>

@@ -2,6 +2,7 @@
 //  var previewPost = document.querySelector('.image-view img');
 //  var filePost = document.querySelector('#post-image').files[0];
 
+
   function togglePainel(toShow, ...esconde) {
     toShow.addClass('visible').removeClass('hidden');
     esconde.map(item => {
@@ -9,10 +10,19 @@
     });
   }
 
-  function previewFile() {
+  function previewMovie() {
+    let titulo = $('.card-header strong');
+    let genero = $('#category');
+    let movieName = $('#movieName').val();
+    let movieGenero = $('#movieGenero').val();
+
     let preview = document.querySelector('.card img');
     let file = document.querySelector('#moviePoster').files[0];
     let reader = new FileReader();
+
+    titulo.html(movieName);
+    genero.html(movieGenero);
+    
 
     reader.addEventListener('load', () => {
       preview.src = reader.result;
@@ -23,12 +33,23 @@
     }
   }
 
-  function previewCard() {
-    let titulo = document.querySelector('.card-header strong');
-    let genero = document.querySelector('#category');
+  function previewPost() {
+    let postText = $('.postForm textarea[name="post-text"]').val();
+    let previeText = $('.title strong');
+    
+    let preview = document.querySelector('.image-view img');
+    let file = document.querySelector('#post-image').files[0];
+    let reader =  new FileReader();
 
-    titulo.innerHTML = movieName.value;
-    genero.innerHTML = movieGenero.value;
+    previeText.html(postText);
+
+    reader.addEventListener('load', () => {
+      preview.src = reader.result;
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   function insertMovie(id) {
@@ -133,5 +154,4 @@
       let show = $('.show-posts');
       togglePainel(show, ...esconde);
     });
-  
   })(jQuery);
