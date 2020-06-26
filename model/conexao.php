@@ -9,7 +9,7 @@
 
     function __construct(){
       $this->api_url = new Client([
-        'base_uri' => 'http://localhost:3000',
+        'base_uri' => 'https://cineasy.herokuapp.com',
       ]);
     }
   }

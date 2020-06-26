@@ -1,6 +1,10 @@
 //windows scroll
-$(window).scroll(function() {
+$(window).scroll(() => {
   if ($(document).scrollTop() > 1400 && $("#modalPlanos").attr("displayed") === "false") {
+    if(width < 880){
+      $(this).hide();
+      return
+    }
     $('#modalPlanos').modal('show');
     $("#modalPlanos").attr("displayed", "true");
   }
@@ -11,8 +15,8 @@ $(document).ready(() => {
   var play = document.querySelector('.modal-play');
   var close = document.querySelector('.modal-close');
 
-  play.onclick = toggle;
-  close.onclick = toggle;
+  // play.onclick = toggle;
+  // close.onclick = toggle;
 
   function toggle() {
     var trailer = document.querySelector('.trailer');

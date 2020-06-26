@@ -1,35 +1,37 @@
 <?php
-session_start();
-// if (!$_SESSION['company_log']) {
-//   header('Location: ../index.php');
-//   exit();
-// }
-$_SESSION['company_name'] = 'CineDev';
+  session_start();
+  include '../controller/get.php';
+
+  if (!$_SESSION['company_log']) {
+    header('Location: ../index.php');
+    exit();
+  }
+  $get = new GetMetods() ;
+  $get->getUser($_SESSION['user_id']);
+  $user = $get->userObject[0];
 ?>
 <html lang="pt-br">
 
 <head>
-  <title><?= $_SESSION['company_name'] ?></title>
+  <title><?=$user->nomeFantasia?></title>
   <?php require_once './header.php' ?>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/company-style.css">
-
-  <?php include '../controller/get.php' ?>
 </head>
 
 <body>
   <?php
-  $url = 'http://localhost:3000/filmes/poster/';
-  $get = new GetMetods();
 
+  $url = 'http://localhost:3000/filmes/poster/';
+  $urlFoto = 'http://localhost:3000/fotoperfil/';
   $get->getMovie('/listaemalta/', 8);
   ?>
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(<?=$urlFoto.$user->fotoUser?>);"></a>
         <ul class="list-unstyled components mb-5">
           <li>
             <a href="#createMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Publicar</a>
@@ -55,7 +57,7 @@ $_SESSION['company_name'] = 'CineDev';
 
         <div class="footer">
           <!-- adcionar o nome da emrpesa -->
-          <p>Cineasy em parceria com <?= $_SESSION['company_name'] ?></p>
+          <p>Cineasy em parceria com <?=$user->razaoSocial?></p>
           <span>diretos autorais</span>
         </div>
 
@@ -79,7 +81,7 @@ $_SESSION['company_name'] = 'CineDev';
           <div class="collapse navbar-collapse" id="togglePageNavbar">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="../">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Duvidas</a>
@@ -98,12 +100,12 @@ $_SESSION['company_name'] = 'CineDev';
               <div class="col">
                 <!-- Nome do filme -->
                 <label for="movieName">Nome do Filme</label>
-                <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: Anaconda e elas " onchange="previewMovie()">
+                <input type="text" id="movieName" class="form-control" name="movieName" placeholder="ex: 5 Dias de Guerra" onchange="previewMovie()">
               </div>
               <div class="col">
                 <!-- nome do Diretor -->
                 <label for="directorName">Diretor</label>
-                <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: João Pindoia">
+                <input type="text" id="directorName" class="form-control" name="directorName" placeholder="ex: Renny Harlin">
               </div>
             </div>
             <div class="form-row mb-4">
@@ -129,7 +131,10 @@ $_SESSION['company_name'] = 'CineDev';
             </div>
             <!-- Id filme -->
             <label for="movieTrailer" style="margin-left: -70%; margin-top: -40px;">Id do trailer</label>
-            <input type="url" id="movieTrailer" class="form-control mb-4" name="movieTrailer" placeholder="clique no '?' para saber como pegar o ID no youtube">
+            <div class="col d-flex" style="align-items:center">
+              <input type="url" id="movieTrailer" class="form-control mb-3" name="movieTrailer" placeholder="clique no '?' para saber como pegar o ID no youtube">
+              <i class="fa fa-question-circle" aria-hidden="true" style="margin-top: -10px;"></i>
+            </div>
             <!-- Tempo de fime & imagem-->
             <div class="form-row mb-4">
               <div class="col">
@@ -172,7 +177,7 @@ $_SESSION['company_name'] = 'CineDev';
                 <strong>Titulo</strong>
               </div>
               <div class="card-img-overlay">
-                <a href="" class="btn btn-info" id="category">Categoria</a>
+                <a href="" class="btn btn-info" id="category">Genero</a>
               </div>
               <img class="card-img" src="../1585614116047-ailhadafantasia.jpg" alt="Imagem do card">
               <div class="card-body d-flex">
@@ -209,7 +214,7 @@ $_SESSION['company_name'] = 'CineDev';
 
         <div class="preview-publicacao">
           <div class="title">
-            <img src="../assets/avatar.svg" alt="" id="icon">
+            <img src="<?=$urlFoto.$user->fotoUser?>" alt="" id="icon">
             <strong class=""></strong>
           </div>
           <div class="image-view">
@@ -228,8 +233,8 @@ $_SESSION['company_name'] = 'CineDev';
       <div class="show-posts hidden">
         <p>ver meus posts</p>
       </div>
-      <div class="company-profile visible">
-        <p>perfil da empresa</p>
+      <div class="company-profile visible" style="margin-top: 2rem;">
+        <h2>Qual a novidade de hoje? <?=$user->nomeFantasia?></h2>
       </div>
     </div>
   </div>

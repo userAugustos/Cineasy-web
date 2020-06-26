@@ -3,8 +3,14 @@ body{
 	background: #23232e;
 	margin: 0;
 	padding: 0;
+	height: 100%;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	font-size: 100%;
 	color: white;
+}
+main{
+	overflow-y: scroll;
 }
 h4{
 	margin: 10px 0 10px 10px;
@@ -37,9 +43,6 @@ footer{
 }
 .card-body #likes{
 	margin-bottom: -3%;
-}
-.card-plans{
-
 }
 .card-deck {
 	margin: 1% 0 2% 0.01%;
@@ -252,9 +255,6 @@ footer{
 	}
 }
 @media (max-width: 800px){
-	body{
-		overflow: hidden;
-	}
 	.filmes div:nth-child(n+4):nth-child(-n+8){ /*selecionando todos as div's juntas, da quarta a oitava*/
 		display: none;
 	}

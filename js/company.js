@@ -1,8 +1,4 @@
 
-//  var previewPost = document.querySelector('.image-view img');
-//  var filePost = document.querySelector('#post-image').files[0];
-
-
   function togglePainel(toShow, ...esconde) {
     toShow.addClass('visible').removeClass('hidden');
     esconde.map(item => {

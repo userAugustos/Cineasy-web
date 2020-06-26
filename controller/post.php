@@ -20,12 +20,13 @@ class PostMetods{
         '/usuarios',
         ['json' =>
         [
-          'nome' => $_POST['nome'],
+          'email' => $_POST['email'],
           'senha' => $_POST['senha'],
-          'telefone' => '55' . $_POST['telefone'],
-          'email' => $_POST['email']
+          'nome' => $_POST['nome'],
+          'telefone' => 55 .$_POST['telefone']
         ]]
       );
+      $error = false;
     } catch (ClientException $e) {
       Psr7\str($e->getRequest());
       echo Psr7\str($e->getResponse());
@@ -35,25 +36,25 @@ class PostMetods{
     if (!$error) {
       $_SESSION['user_name'] = $_POST['nome'];
       $_SESSION['status_register'] = true;
-      header('Location: ../');
-      exit();
+      // header('Location: ../');
+      // exit();
     } else {
       $_SESSION['status_register'] = false;
-      header('Location: ../view/cadastro.php');
-      exit();
+      // header('Location: ../view/cadastro.php');
+      // exit();
     }
   }
   function registerCompany(){
     try {
       $response = $this->url->request(
         'POST',
-        '/cadastroempresa',
+        '/usuarios/cadastroempresa',
         ['json' => [
           'email' => $_POST['email'],
           'senha' => $_POST['senha'],
-          'razaosocial' => $_POST['razao-social'],
+          'razaoSocial' => $_POST['razao-social'],
           'nomeFantasia' => $_POST['nome'],
-          'cnpj' => $_POST['cnpj']
+          'cnpj' => $_POST['cnpj'],
         ]]
       );
     } catch (ClientException $e) {
@@ -62,15 +63,56 @@ class PostMetods{
       $error = true;
     }
     if (!$error) {
-      $_SESSION['company_name'];
-      $_SESSION['status_register'] = true;
+      $_SESSION['company_name'] = $_POST['nome'];
+      // header('Location: ../view/company.php');
+      // exit();
+    } else {
+      $_SESSION['status_register'] = false;
+      // header('Location: ../view/cadastro.php');
+      // exit();
+    }
+  }
+  function logUser(){
+    try {
+      $response = $this->url->request('POST', '/usuarios/login', ['json' =>
+      [
+        'email' => $_POST['email'],
+        'senha' => $_POST['senha']
+      ]]);
+
+      $userinfo = json_decode($response->getBody()); //transformando o json em um objeto para que eu possa acessar um item especifico
+
+      $user_id = $userinfo->id;
+      $token = $userinfo->token;
+      $nome = $userinfo->nome;
+      $tipo_user = $userinfo->tipo_user;
+
+    } catch (ClientException $e) {
+      echo Psr7\str($e->getRequest());
+      echo Psr7\str($e->getResponse());
+      $error = true;
+    }
+    if (!$error) {
+      $_SESSION['status_log'] = true;
+      $_SESSION['user_name'] = $nome;
+      $_SESSION['user_id'] = $user_id;
+
+      if($tipo_user == 1){
+        $_SESSION['company_log'] = true;
+        header('Location: ../view/company.php');
+        exit();
+      }
+      
       header('Location: ../');
       exit();
     } else {
-      $_SESSION['status_register'] = false;
-      header('Location: ../view/cadastro.php');
+      $_SESSION['status_log'] = false;
+      header('Location: ../view/login.php');
       exit();
     }
+  }
+  function resetPass(){
+
   }
   function registerMovie(){
     try {
@@ -107,40 +149,6 @@ class PostMetods{
       header('Location: ../view/company.html');
       exit();
     }
-  }
-
-  function logUser(){
-    try {
-      $response = $this->url->request('POST', '/usuarios/login', ['json' =>
-      [
-        'email' => $_POST['email'],
-        'senha' => $_POST['senha']
-      ]]);
-
-      $userinfo = json_decode($response->getBody()); //transformando o json em um objeto para que eu possa acessar um item especifico
-
-      $user_id = $userinfo->id;
-      $token = $userinfo->token;
-      $nome = $userinfo->nome;
-    } catch (ClientException $e) {
-      echo Psr7\str($e->getRequest());
-      echo Psr7\str($e->getResponse());
-      $error = true;
-    }
-    if (!$error) {
-      $_SESSION['status_log'] = true;
-      $_SESSION['user_name'] = $nome;
-      $_SESSION['user_id'] = $user_id;
-      header('Location: ../');
-      exit();
-    } else {
-      $_SESSION['status_log'] = false;
-      header('Location: ../view/login.php');
-      exit();
-    }
-  }
-  function resetPass(){
-
   }
 }
 $POST = new PostMetods();

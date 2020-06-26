@@ -15,7 +15,7 @@
   $url = 'http://localhost:3000/filmes/poster/';
   $get = new GetMetods();
 
-  $get->getMovie('/listaemalta/', 8); //pegando cartaz
+  $get->getMovie('/films/', 8); //pegando cartaz
 
   function logOut()
   {
@@ -46,11 +46,20 @@
       </li>
       <?php
       if ((isset($_SESSION['status_log'])) || (isset($_SESSION['status_register']))) :
+        if(isset($_SESSION['company_log'])) {
+          $_SESSION['user_name'] = 'CineTodos';
+        }
       ?>
         <li class="nav-custom-item">
-          <a href="./view/profile.php" class="nav-custom-link">
+          <a href="./view/perfil.php" class="nav-custom-link">
             <i class="fas fa-user"></i>
-            <span class="nav-custom-link-text"><?= $_SESSION['user_name'] ?></span>
+            <span class="nav-custom-link-text"><?= $_SESSION['user_name']?></span>
+          </a>
+        </li>
+        <li class="nav-custom-item">
+          <a href="./view/company.php" class="nav-custom-link">
+            <i class="fa fa-list-alt"></i>
+            <span class="nav-custom-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-custom-item">
@@ -255,7 +264,7 @@
             <a href="#">Moviecom</a>
           </p>
           <p>
-            <a href="#">Não sei brother</a>
+            <a href="#">CineTodos</a>
           </p>
           <p>
             <a href="#">Outra empresa</a>

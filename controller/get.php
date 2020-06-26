@@ -36,7 +36,7 @@
     function getUser($id){
       $response = $this->url->request('GET', '/usuarios/dados/' . $id);
       $this->userObject = json_decode($response->getBody());
-      $this->userObject;
+      return $this->userObject;
     }
   }
   

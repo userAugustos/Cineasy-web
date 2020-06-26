@@ -14,6 +14,7 @@
 			<div class="register-image"></div>
 
 			<div class="register-content">
+				<!-- user register form  -->
 				<form action="../controller/post.php" class="register-form text-light animated fadeIn show" id="user" method="post">
 
 					<a href="/" class="text-light"><i class="fas fa-chevron-left"></i> Voltar</a>
@@ -33,6 +34,9 @@
 						<span class="fa fa-fw fa-eye btnVerSenha float-right text-dark" onclick="verSenha()"></span>
 						<small class="form-text text-danger helperPassword"></small>
 					</div>
+					<div class="form-group mb-4">
+						<input type="tel" class="form-control" placeholder="ex: 11976765835" name="telefone" required aria-valuenow="2" aria-valuemax="13" aria-valuemin="13" />
+					</div>
 					<input type="submit" name="cadastrarUser" class="btn btn-outline-light btn-block" value="Cadastrar">
 					<p class="d-flex justify-content-center my-3">
 						<hr class="bg-white">
@@ -42,6 +46,7 @@
 					</p>
 					<button type="button"class="btn btn-outline-light btn-block" id="log-as-company">Entrar como Rede de Cinema</button>
 				</form>
+				<!-- Company register form  -->
 				<form action="../controller/post.php" class="register-form text-light animated fadeIn hide" id="company" method="post">
 
 					<a href="/" class="text-light"><i class="fas fa-chevron-left"></i> Voltar</a>
