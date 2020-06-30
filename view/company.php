@@ -1,19 +1,19 @@
 <?php
-  session_start();
-  include '../controller/get.php';
+session_start();
+include '../controller/get.php';
 
-  if (!$_SESSION['company_log']) {
-    header('Location: ../index.php');
-    exit();
-  }
-  $get = new GetMetods();
-  $get->getUser('/empresa/',$_SESSION['user_id']);
-  $user = $get->userObject[0];
+if (!$_SESSION['company_log']) {
+  header('Location: ../index.php');
+  exit();
+}
+$get = new GetMetods();
+$get->getUser('/empresa/', $_SESSION['user_id']);
+$user = $get->userObject[0];
 ?>
 <html lang="pt-br">
 
 <head>
-  <title><?=$_SESSION['user_name']?></title>
+  <title><?= $_SESSION['user_name'] ?></title>
   <?php require_once './header.php' ?>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../css/style.css">
@@ -31,7 +31,7 @@
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?=$urlFoto.$user->fotoUser?>')"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?= $urlFoto . $user->fotoUser ?>')"></a>
         <button class="btn btn-dark">Trocar Foto</button>
         <ul class="list-unstyled components mb-5">
           <li>
@@ -58,7 +58,7 @@
 
         <div class="footer">
           <!-- adcionar o nome da emrpesa -->
-          <p>Cineasy em parceria com <?=$user->razaoSocial?></p>
+          <p>Cineasy em parceria com <?= $user->razaoSocial ?></p>
           <span>diretos autorais</span>
         </div>
 
@@ -215,7 +215,7 @@
 
         <div class="preview-publicacao">
           <div class="title">
-            <img src="<?=$urlFoto.$user->fotoUser?>" alt="" id="icon">
+            <img src="<?= $urlFoto . $user->fotoUser ?>" alt="" id="icon">
             <strong class=""></strong>
           </div>
           <div class="image-view">
@@ -235,19 +235,26 @@
         <p>ver meus posts</p>
       </div>
       <div class="company-profile visible flex-column w-100 p-3 mr-auto" style="margin-top: 2rem;">
-        <h2>Olá 
-          <?=$user->nome?>
+        <h2>Olá
+          <?= $user->nome ?>
         </h2>
-        <div class="content d-flex flex-column justify-content-start p2 w-100">
+        <p>Esteja sempre atento as informações da sua comunidade</p>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <p>Seus seguidores estão comentando sobre:</p>
+          <div class="d-flex" id="movies-on-rise">
+
+          </div>
+        </div>
+        <section class="content d-flex flex-column justify-content-start p2 w-100">
           <div class="followers">
             <div class="title d-flex justify-content-between align-items-center w-100">
-              <h4>Seus Seguidores</h4>
-              <p>440 seguidores</p>
+              <h5>Seus Seguidores</h5>
+              <p id="followers"></p>
             </div>
             <div class="content d-flex flex-wrap p-2 justify-content-between align-items-start w-100">
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>

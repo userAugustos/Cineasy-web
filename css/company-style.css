@@ -245,21 +245,43 @@ div.pub-post {
   justify-content: space-between;
   align-items: center;
 }
-
-.follower {
+.company-profile section.content .content{
+  overflow-y: scroll;
+  max-height: 80vh;
+}
+.company-profile section.content .content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.company-profile section.content .content::-webkit-scrollbar-track-piece  {
+  background-color: #C2D2E4;
+}
+.company-profile section.content .content::-webkit-scrollbar-thumb:vertical {
+  height: 25px;
+  background-color: rgba(250, 233, 42, 0.8);
+}
+.follower, .movie-on-rise{
   transition: .4s;
   padding: 6px;
 
   background: #fff;
   color: #1d1919;
 
-  box-shadow: -5px 5px 6px -2px rgba(250, 233, 42, 0.8);
+  box-shadow: -5px 5px 10px -6px rgba(250, 233, 42, 0.8);
   border-radius: 6px;
 
   cursor: pointer;
   margin: 1rem .5rem;
 }
+.movie-on-rise {
+  margin: 1px 5px;
+  padding: 3px 6px;
+  box-shadow: -5px 5px 10px -6px rgba(252, 248, 237, 0.8);
+  background: #1d1919;
+  color: #fff;
+}
 .follower img {
+  border-radius: 8px;
   max-width: 3rem;
   max-height: 3rem;
 }
