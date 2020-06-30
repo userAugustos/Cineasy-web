@@ -6,14 +6,14 @@
     header('Location: ../index.php');
     exit();
   }
-  $get = new GetMetods() ;
-  $get->getUser($_SESSION['user_id']);
+  $get = new GetMetods();
+  $get->getUser('/empresa/',$_SESSION['user_id']);
   $user = $get->userObject[0];
 ?>
 <html lang="pt-br">
 
 <head>
-  <title><?=$user->nomeFantasia?></title>
+  <title><?=$_SESSION['user_name']?></title>
   <?php require_once './header.php' ?>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../css/style.css">
@@ -23,15 +23,16 @@
 <body>
   <?php
 
-  $url = 'http://localhost:3000/filmes/poster/';
-  $urlFoto = 'http://localhost:3000/fotoperfil/';
+  $url = 'https://cineasy.herokuapp.com/filmes/poster/';
+  $urlFoto = 'https://cineasy.herokuapp.com/fotoperfil/';
   $get->getMovie('/listaemalta/', 8);
   ?>
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(<?=$urlFoto.$user->fotoUser?>);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?=$urlFoto.$user->fotoUser?>')"></a>
+        <button class="btn btn-dark">Trocar Foto</button>
         <ul class="list-unstyled components mb-5">
           <li>
             <a href="#createMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Publicar</a>
@@ -197,7 +198,7 @@
       <div class="pub-post hidden">
         <div class="postForm">
           <form class="text-center p-5" action="#!" method="post">
-            <p class="h4 mb-4" style="margin: -20px 0 0 0">Cire publicações para engajar sua comunidade</p>
+            <p class="h4 mb-4" style="margin: -20px 0 0 0; border-radius: 1rem;">Cire publicações para engajar sua comunidade</p>
             <div class="form-row mb-4">
               <div class="col d-block">
                 <!-- Texto da publicação -->
@@ -233,8 +234,20 @@
       <div class="show-posts hidden">
         <p>ver meus posts</p>
       </div>
-      <div class="company-profile visible" style="margin-top: 2rem;">
-        <h2>Qual a novidade de hoje? <?=$user->nomeFantasia?></h2>
+      <div class="company-profile visible flex-column w-100 p-3 mr-auto" style="margin-top: 2rem;">
+        <h2>Olá 
+          <?=$user->nome?>
+        </h2>
+        <div class="content d-flex flex-column justify-content-start p2 w-100">
+          <div class="followers">
+            <div class="title d-flex justify-content-between align-items-center w-100">
+              <h4>Seus Seguidores</h4>
+              <p>440 seguidores</p>
+            </div>
+            <div class="content d-flex flex-wrap p-2 justify-content-between align-items-start w-100">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -248,7 +261,6 @@
 
   <script src="../node_modules/aos/dist/aos.js"></script>
   <script>
-    var id = <?= $movie->id_films ?>;
     AOS.init();
   </script>
   <!-- Custom JS -->

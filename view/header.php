@@ -10,4 +10,4 @@
 <link rel="stylesheet" href="../node_modules/animate.css/animate.min.css">
 <link rel="stylesheet" href="../node_modules/alertifyjs/build/css/alertify.min.css">
 <link rel="stylesheet" href="../node_modules/alertifyjs/build/css/themes/default.min.css">
-<link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">

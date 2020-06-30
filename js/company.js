@@ -150,4 +150,15 @@
       let show = $('.show-posts');
       togglePainel(show, ...esconde);
     });
+
+    const followesList = $('.followers .content');
+
+      followesList.html(`
+        <div class="follower justify-content-between align-items-center">
+          <img src="../assets/logo.svg" alt="User profile pic">
+          <strong class="followe-name">Cineasy Adm.</strong>
+        </div>
+      `);
+    
+
   })(jQuery);

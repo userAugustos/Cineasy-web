@@ -33,8 +33,8 @@
       $this->postObject = json_decode($response->getBody());
     }
 
-    function getUser($id){
-      $response = $this->url->request('GET', '/usuarios/dados/' . $id);
+    function getUser($tipo_user, $id){
+      $response = $this->url->request('GET', $tipo_user.'dados/'.$id);
       $this->userObject = json_decode($response->getBody());
       return $this->userObject;
     }
