@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <html lang="pt-br">
 
 <head>
@@ -21,6 +21,7 @@
   {
     unset($_SESSION['status_log']);
     unset($_SESSION['status_register']);
+    session_destroy();
   }
 
   if (isset($_GET['logout'])) {
@@ -45,7 +46,7 @@
         </a>
       </li>
       <?php
-      if ((isset($_SESSION['status_log'])) || (isset($_SESSION['status_register']))) :
+      if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == true ) || (isset($_SESSION['status_register']) && $_SESSION['status_register'] == true )) :
       ?>
         <li class="nav-custom-item">
           <a href="./view/perfil.php" class="nav-custom-link">

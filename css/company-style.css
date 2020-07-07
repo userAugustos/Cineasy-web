@@ -1,3 +1,7 @@
+body{
+  font-size: 100%;
+  overflow-x: hidden;
+}
 a {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
@@ -188,8 +192,6 @@ div.pub-post {
   margin-top: 2rem;
 }
 .preview-publicacao {
-  width: 28rem;
-  height: 26rem;
   background: #3f3e4a;
   padding: 2rem 1rem;
 
@@ -214,8 +216,8 @@ div.pub-post {
 }
 .preview-publicacao .image-view img {
   border-radius: 10px;
-  max-width: 100% !important;
-  max-height: 100% !important;
+  max-width: 40vw;
+  max-height: 45vh;
 }
 .preview-publicacao .title {
   justify-content: flex-start;
@@ -287,6 +289,13 @@ div.pub-post {
 }
 .follower:hover {
   padding: 6px 10px;
+}
+.preview-profile {
+  max-height: 300px;
+}
+.preview-profile img{
+  max-width: 100%;
+  max-height: 300px;
 }
 /*variables class*/
 .visible {

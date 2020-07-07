@@ -1,19 +1,21 @@
-<?php
-session_start();
-include '../controller/get.php';
-
+<?php session_start();
 if (!$_SESSION['company_log']) {
   header('Location: ../index.php');
   exit();
 }
-$get = new GetMetods();
-$get->getUser('/empresa/', $_SESSION['user_id']);
-$user = $get->userObject[0];
+  include '../controller/get.php';
+
+  $id = $_SESSION['user_id'];
+  $name = $_SESSION['user_name'];
+
+  $get = new GetMetods();
+  $get->getUser('/empresa/', $id);
+  $user = $get->userObject[0];
 ?>
 <html lang="pt-br">
 
 <head>
-  <title><?= $_SESSION['user_name'] ?></title>
+  <title><?=$name?></title>
   <?php require_once './header.php' ?>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../css/style.css">
@@ -23,16 +25,17 @@ $user = $get->userObject[0];
 <body>
   <?php
 
-  $url = 'https://cineasy.herokuapp.com/filmes/poster/';
-  $urlFoto = 'https://cineasy.herokuapp.com/fotoperfil/';
-  $get->getMovie('/listaemalta/', 8);
+    $url = 'https://cineasy.herokuapp.com/filmes/poster/';
+    $urlFoto = 'https://cineasy.herokuapp.com/fotoperfil/';
+    $get->getMovie('/listaemalta/', 8);
+
   ?>
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
         <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?= $urlFoto . $user->fotoUser ?>')"></a>
-        <button class="btn btn-dark">Trocar Foto</button>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#changeProfilePic">Trocar Foto</button>
         <ul class="list-unstyled components mb-5">
           <li>
             <a href="#createMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Publicar</a>
@@ -259,6 +262,40 @@ $user = $get->userObject[0];
     </div>
   </div>
 
+  <div class="modal fade" id="changeProfilePic" tabindex="-1" role="dialog" aria-labelledby="changeProfilePic" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeProfilePic">Mude sua foto de perfil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex flex-column justify-content-between align-items-center w-100" id="modal-profile">
+        <div class="preview-profile">
+          <img src="../assets/userIcon.png" alt="profile pic">
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_method" value="put" />
+          <div class="form-group">
+            <input type="file" name="fileData" id="profilePic">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-dark" name="profile_pic" onclick="setProfilePicCompany(<?=$id?>)">
+              Mudar 
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/popper.js/dist/popper.js"></script>
@@ -272,6 +309,7 @@ $user = $get->userObject[0];
   </script>
   <!-- Custom JS -->
   <script src="../js/company.js"></script>
+  <script src="../js/uploadFile.js"></script>
 </body>
 
 </html>

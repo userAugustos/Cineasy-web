@@ -92,17 +92,15 @@ class PostMetods{
       $_SESSION['status_log'] = true;
       $_SESSION['user_id'] = $userinfo->id;
       $_SESSION['user_name'] = $userinfo->nome;
-
+      
       if($userinfo->tipo_user == 1){
-
+        echo 'entrou como empresa';
         $_SESSION['company_log'] = true;
         header('Location: ../view/company.php');
         exit();
-        return;
       }else {
         header('Location: ../');
         exit();
-        return;
       }
     } else {
       $_SESSION['status_log'] = false;

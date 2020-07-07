@@ -1,9 +1,18 @@
 <?php
   session_start();
+  if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == false ) || (isset($_SESSION['status_register']) && $_SESSION['status_register'] == false )) {
+    header('Location: ../');
+    exit();
+  }
   require_once '../controller/get.php';
 
   $get = new GetMetods();
-  $get->getUser($_SESSION['user_id']);
+
+  if(isset($_SESSION['company_log']) && $_SESSION['company_log'] == true){
+    $get->getUser('empresa/',$_SESSION['user_id']);
+  }else{
+    $get->getUser('usuarios/',$_SESSION['user_id']);
+  }
   $user = $get->userObject[0];
 ?>
 <html lang="pt-br">
@@ -47,7 +56,7 @@
             <a data-item-type="retrieve-codes" href="#">Resgatar Código</a>
           </li>
           <li class="profile-menu__item">
-            <a href="../index.php">Home</a>
+            <a data-item-type="profile" href="#">Atualizar Perfil</a>
           </li>
         </ul>
       </div>
@@ -66,8 +75,8 @@
           <div id="retrieve-codes">
 
           </div>
-          <div id="privacity">
-
+          <div id="profile">
+            
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <?php session_start();
-if ((isset($_SESSION['status_log'])) || (isset($_SESSION['status_register']))) {
+if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == true ) || (isset($_SESSION['status_register']) && $_SESSION['status_register'] == true )) {
   header('Location: ../');
   exit();
 }

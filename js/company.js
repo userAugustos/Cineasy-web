@@ -81,6 +81,13 @@ function insertMovie(id) {
       console.log("error" + err);
     });
 }
+function changeProfilePic(id) {
+  $.post("../controller/put.php", { profile_pic: "1", id: id }).done(
+    (response) => {
+      console.log(response);
+    }
+  );
+}
 
 (($) => {
   "use strict";
@@ -158,24 +165,48 @@ function insertMovie(id) {
     togglePainel(show, ...esconde);
   });
 
-  const followersQtd = 440;
-  const moviesRiseQtd = 3;
+  const baseProfileUrl = 'https://cineasy.herokuapp.com/fotoperfil/';
 
-  $(".title #followers").html(`${followersQtd} seguidores`);
-  
-  for (let index = 0; index <= moviesRiseQtd - 1; index++) {
-  $('.company-profile #movies-on-rise').append(`
-    <div class="movie-on-rise align-items-center justify-content-center">
-      <strong>Coringa</strong>
-    </div>
-  `);
-  }
-  for (let index = 0; index <= followersQtd - 1; index++) {
+  const followersQtd = [
+    { nome: "Cinemark", fotoperfil: "1590959529725-cinr.jpg", id: 1 },
+    { nome: "Kaiquinho Grau", fotoperfil: "avatarperfil.png", id: 2 },
+    { nome: "Thaizinha quebra", fotoperfil: "avatarperfil.png", id: 3 },
+    {nome: 'Maxx vrau', fotoperfil: '1591477595958-image-ce4a303e-ae42-4641-bd97-5e0d2e0c491e.jpg', id: 4}
+  ];
+
+  const moviesRiseQtd = [
+    { nome: "Coringa", id: 1 },
+    { nome: "Malévola 2: dona do mal", id: 2 },
+  ];
+
+  $(".title #followers").html(`${followersQtd.length} seguidores`);
+
+  moviesRiseQtd.map((movie) => {
+    $(".company-profile #movies-on-rise").append(`
+      <div class="movie-on-rise align-items-center justify-content-center" id="${movie.id}">
+        <strong>${movie.nome}</strong>
+      </div>
+    `);
+  });
+
+  followersQtd.map((follower) => {
     $(".followers .content").append(`
-          <div class="follower justify-content-between align-items-center">
-            <img src="../assets/logo.svg" alt="User profile pic">
-            <strong class="followe-name">Cineasy Adm.</strong>
-          </div>
-        `);
-  }
+        <div class="follower justify-content-between align-items-center" id="${follower.id}">
+          <img src="${baseProfileUrl+follower.fotoperfil}" alt="User profile pic">
+          <strong class="followe-name">${follower.nome}</strong>
+        </div>
+    `);
+  });
+
+  $(function(){
+    $('#modal-profile input[name="fileData"]').change(function(){
+      const file = $(this)[0].files[0];
+      const fileReader = new FileReader;
+    
+      fileReader.onloadend = () => {
+        $('#modal-profile .preview-profile img').attr('src', fileReader.result)
+      }
+      fileReader.readAsDataURL(file);
+    })
+  })
 })(jQuery);
