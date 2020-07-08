@@ -32,6 +32,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "jquery-mask-plugin": "^1.14.16",
+    "mdbootstrap": "^4.19.1",
     "popper.js": "^1.16.1"
   }
 }

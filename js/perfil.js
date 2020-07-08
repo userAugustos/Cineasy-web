@@ -43,6 +43,79 @@ const Profile = (function(){
   return {
     init
   }
+
 })();
+
+function previewFile(input, image){
+  input.change(function(){
+    const file = $(this)[0].files[0];
+    const fileReader = new FileReader;
+  
+    fileReader.onloadend = () => {
+      image.attr('src', fileReader.result)
+    }
+    fileReader.readAsDataURL(file);
+  })
+}
+function previewText(text, destiny) {
+  text.change(() => {
+    destiny.html(text[0].value)
+    console.log(text[0].value)
+  })
+}
+function setProfilePicUser(id) {
+  let formData = new FormData();
+  let profilePic = $('form #profilePic')[0];
+  let formatPic = profilePic.files[0].name.split(".")[1];
+
+  formData.append("fileData", profilePic.files[0]);
+
+  if (formatPic == "jpg" || formatPic == "png" || formatPic == "svg") {
+    $.ajax({
+      url: `https://cineasy.herokuapp.com/usuarios/uploadperfil/${id}`,
+      type: 'PUT',
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: () =>{ alert('Imagem trocada')}
+    }).fail(function(err) {
+      alert( "error" + err);
+    })
+  }else{
+    alert('Formato de imagem não surpotado');
+  }
+}
+function setBannerPicUser(id) {
+  let formData = new FormData();
+  let bannerPic = $('form #bannerPic')[0];
+  let formatPic = bannerPic.files[0].name.split('.')[1];
+
+  formData.append('fileCapa', bannerPic.files[0]);
+  
+  if (formatPic == "jpg" || formatPic == "png" || formatPic == "svg") {
+    $.ajax({
+      url: `https://cineasy.herokuapp.com/usuarios/uploadcapa/${id}`,
+      type: 'PUT',
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: () =>{ alert('Imagem trocada')}
+    }).fail(function(err) {
+      alert( "error" + err);
+    })
+  }else{
+    alert('Formato de imagem não surpotado');
+  }  
+}
+
+previewFile($('.profile-pic input[name="profilePic"]'), $('.profile-pic img'));
+previewFile($('.banner input[name="bannerPic"]'), $('.banner img'));
+previewText($('.phrase input[name="phrase"]'), $('.cover-description'));
+
+// $("form").submit(function(e){
+//   e.preventDefault();
+// });
 
 window.addEventListener('load', Profile.init, false)
