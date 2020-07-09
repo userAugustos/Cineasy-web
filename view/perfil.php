@@ -19,7 +19,7 @@ $id = $_SESSION['user_id'];
 <html lang="pt-br">
 
 <head>
-  <title><?= $user->nome ?></title>
+  <title>Cineasy</title>
 
   <link href="../node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
 
@@ -29,7 +29,7 @@ $id = $_SESSION['user_id'];
 
 <body>
   <?php
-  $url = 'https://cineasy.herokuapp.com/fotoperfil/';
+  $url = 'http://localhost:3000/fotoperfil/';
   ?>
   <div class="cover-container">
     <div class="cover-picture" style="background-image: url(<?= $url . $user->capaUser ?>)"></div>
@@ -38,7 +38,7 @@ $id = $_SESSION['user_id'];
       <?php if ($user->frase) {
         echo $user->frase;
       } else {
-        echo 'Você ainda não deifniu uma frase';
+        echo 'Você ainda não definiu uma frase';
       } ?>
     </span>
   </div>
@@ -68,8 +68,9 @@ $id = $_SESSION['user_id'];
 
       <div class="col-12">
         <div class="content-holder">
-          <div id="general" class="active">
-            Bem vindo <?= $user->nome ?>
+          <div id="general d-flex justify-content-between aligm-items-center" class="active">
+            <h4>Bem vindo <?= $user->nome ?></h4>
+	    <a href="../">Home</a>
           </div>
           <div id="history">
 
@@ -103,14 +104,14 @@ $id = $_SESSION['user_id'];
             <div class="profile-phrase">
               Altere a frase de perfil
               <div class="phrase">
-                <form class="" action="../controller/put.php" method="POST" enctype="multipart/form-data">
+                <form class="" action="" method="POST" id="phrase-form" enctype="multipart/form-data">
                   <input type="hidden" name="_method" value="put" />
                   <div class="">
                     <span></span>
                     <input type="text" name="phrase" id="phrase">
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-dark" name="phrase-profile">
+                    <button type="submit" class="btn btn-dark" name="phrase-profile" onclick="setProfilePhrase(<?= $id ?>, <?= $user->nome ?>)">
                       alterar
                     </button>
                   </div>
@@ -148,6 +149,8 @@ $id = $_SESSION['user_id'];
   <?php require_once './footer.php' ?>
   <script src="../js/perfil.js"></script>
   <script src="../node_modules/mdbootstrap/js/mdb.min.js"></script>
+  <script>
+  </script>
 </body>
 
 </html>

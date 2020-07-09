@@ -1,9 +1,22 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <html lang="pt-br">
 
 <head>
   <title>Cineasy</title>
-  <?php require_once './view/header.php'; ?>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-reboot.min.css">
+
+  <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+  <link rel="stylesheet" href="./node_modules/alertifyjs/build/css/alertify.min.css">
+  <link rel="stylesheet" href="./node_modules/alertifyjs/build/css/themes/default.min.css">
+  <link rel="stylesheet" href="./node_modules/aos/dist/aos.css">
+
+  <link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
   <link rel="stylesheet" href="../css/default.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -12,7 +25,7 @@
 
 <body>
   <?php
-  $url = 'https://cineasy.herokuapp.com/filmes/poster/';
+  $url = 'http://localhost:3000/filmes/poster/';
   $get = new GetMetods();
 
   $get->getMovie('/films/', 8); //pegando cartaz
@@ -46,21 +59,21 @@
         </a>
       </li>
       <?php
-      if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == true ) || (isset($_SESSION['status_register']) && $_SESSION['status_register'] == true )) :
+      if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == true) || (isset($_SESSION['status_register']) && $_SESSION['status_register'] == true)) :
       ?>
         <li class="nav-custom-item">
           <a href="./view/perfil.php" class="nav-custom-link">
             <i class="fas fa-user"></i>
-            <span class="nav-custom-link-text"><?=$_SESSION['user_name']?></span>
+            <span class="nav-custom-link-text"><?= $_SESSION['user_name'] ?></span>
           </a>
         </li>
-        <?php if(isset($_SESSION['company_log'])): ?>
-        <li class="nav-custom-item">
-          <a href="./view/company.php" class="nav-custom-link">
-            <i class="fa fa-list-alt"></i>
-            <span class="nav-custom-link-text">Dashboard</span>
-          </a>
-        </li>
+        <?php if (isset($_SESSION['company_log'])) : ?>
+          <li class="nav-custom-item">
+            <a href="./view/company.php" class="nav-custom-link">
+              <i class="fa fa-list-alt"></i>
+              <span class="nav-custom-link-text">Dashboard</span>
+            </a>
+          </li>
         <?php endif; ?>
         <li class="nav-custom-item">
           <a href="/?logout=true" class="nav-custom-link">
@@ -134,7 +147,7 @@
             <div class="card-img-overlay">
               <a href="" class="btn btn-info" id="category"><?= $movie->genero ?></a>
             </div>
-            <img class="card-img" alt="Imagem do card" src=<?=$url.$movie->foto ?>>
+            <img class="card-img" alt="Imagem do card" src=<?= $url . $movie->foto ?>>
             <div class="card-body d-flex">
               <span id="likes">
                 <a href="#">
@@ -154,9 +167,9 @@
 
     <h4 id="plans-title">Pacotes Cineasy</h4>
 
-    <div class="card-deck">
+    <div class="card-deck" id="plans-deck">
       <div class="card" id="card-plans" data-aos="fade-left">
-
+        <div style="" id="free-plan"></div>
         <img class="card-img-top" src="../assets/harley.png">
         <div class="card-body card-plans">
           <h5 class="card-title">Plano Free</h5>
@@ -175,10 +188,10 @@
       </div>
       <div class="card" id="card-plans" data-aos="fade-up">
 
-        <img class="card-img-top" src="../assets/tchala.png">
+        <div style="" id="hero-plan"></div>
+        <img class="card-img-top" src="../assets/tchala.png" style="margin-bottom: -.5rem !important" />
 
         <div class="card-body card-plans">
-
           <h5 class="card-title">Plano Hero</h5>
           <h4>R$ 18,00</h4>
           <p class="card-text">Com o plano hero você tem acesso a tudo que teria no planos free</p>
@@ -192,11 +205,12 @@
 
         </div>
       </div>
-      <div class="card" id="card-plans" data-aos="fade-right">
+      <div class="card" id="card-plans" data-aos="fade-right" style="margin-top: 2rem;">
 
-        <img class="card-img-top" src="../assets/darth_vader.png">
+        <div style="" id="super-plan"></div>
+        <img class="card-img-top" src="../assets/darth_vader.png" style="height: 50%; margin-bottom: -2rem !important;" />
 
-        <div class="card-body cad-plans">
+        <div class="card-body cad-plans" style="max-height: 430px;">
           <h5 class="card-title">Plano Super Hero</h5>
           <h4>R$22,00</h4>
           <p class="card-text">Com o plano Super Hero, você tem acesso a tudo dos planos free e Hero</p>
@@ -245,13 +259,13 @@
           <h6 class="text-uppercase font-weight-bold">Planos</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a href="#">Free</a>
+            <a href="#free-plan">Free</a>
           </p>
           <p>
-            <a href="#">Hero</a>
+            <a href="#hero-plan">Hero</a>
           </p>
           <p>
-            <a href="#">Super Hero</a>
+            <a href="#super-plan">Super Hero</a>
           </p>
         </div>
         <div class="col-sm-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -267,7 +281,7 @@
             <a href="#">CineTodos</a>
           </p>
           <p>
-            <a href="#">Outra empresa</a>
+            <a href="#">Cineblanca</a>
           </p>
         </div>
         <div class="col-sm-1 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
@@ -299,11 +313,10 @@
     </div>
     <div class="conteudo-modal">
       <div id="plans">
-        <h5>Assine os planos Cineasy, com os planos você terá acesso a vantagens unicas dentro do website e
-          aplicativo mobile. </h5>
-        <h5>Você poderá teracesso a desontos únicos e pacotes especias </h5>
+        <h5>Assine os planos Cineasy, com os planos você terá acesso a vantagens unicas dentro da plataforma Cineasy.</h5>
+        <h5>Você poderá ter acesso a descontos únicos e pacotes especias </h5>
 
-        <button class="btn btn-danger" data-dismiss="modal" aria-label="Fechar">Planos</button>
+        <a href="#super-plan" class="btn btn-danger" data-dismiss="modal" aria-label="Fechar">Planos</a>
       </div>
       <div id="phrase">
         <h4>

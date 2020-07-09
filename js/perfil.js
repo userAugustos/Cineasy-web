@@ -60,7 +60,6 @@ function previewFile(input, image){
 function previewText(text, destiny) {
   text.change(() => {
     destiny.html(text[0].value)
-    console.log(text[0].value)
   })
 }
 function setProfilePicUser(id) {
@@ -72,7 +71,7 @@ function setProfilePicUser(id) {
 
   if (formatPic == "jpg" || formatPic == "png" || formatPic == "svg") {
     $.ajax({
-      url: `https://cineasy.herokuapp.com/usuarios/uploadperfil/${id}`,
+      url: `http://localhost:3000/usuarios/uploadperfil/${id}`,
       type: 'PUT',
       data: formData,
       contentType: false,
@@ -95,7 +94,7 @@ function setBannerPicUser(id) {
   
   if (formatPic == "jpg" || formatPic == "png" || formatPic == "svg") {
     $.ajax({
-      url: `https://cineasy.herokuapp.com/usuarios/uploadcapa/${id}`,
+      url: `http://localhost:3000/usuarios/uploadcapa/${id}`,
       type: 'PUT',
       data: formData,
       contentType: false,
@@ -109,7 +108,30 @@ function setBannerPicUser(id) {
     alert('Formato de imagem não surpotado');
   }  
 }
+function setProfilePhrase(id, name) {
+  alert('Oi')
+  console.log(id, name)
+  let formData = new FormData();
 
+  let phrase = $('input[name="phrase"]');
+
+  formData.append('nome', name)
+  formData.append('frase', phrase.val());
+
+  $.ajax({
+    url: `http://localhost:3000/usuarios/editadados/${id}`,
+    type: 'PUT',
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: () => {
+      alert('Frase Trocada')
+    }
+  }).fail(function(err) {
+    alert("Tivemos um problema incomum" + err);
+  })
+}
 previewFile($('.profile-pic input[name="profilePic"]'), $('.profile-pic img'));
 previewFile($('.banner input[name="bannerPic"]'), $('.banner img'));
 previewText($('.phrase input[name="phrase"]'), $('.cover-description'));

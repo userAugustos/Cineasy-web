@@ -17,7 +17,7 @@
 				<!-- user register form  -->
 				<form action="../controller/post.php" class="register-form text-light animated fadeIn show" id="user" method="post">
 
-					<a href="/" class="text-light"><i class="fas fa-chevron-left"></i> Voltar</a>
+					<a href="../" class="text-light"><i class="fas fa-chevron-left"></i> Voltar</a>
 
 					<h2 class="my-3">
 						Pronto para o mundo do Cinema?

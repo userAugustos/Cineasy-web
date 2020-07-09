@@ -22,7 +22,7 @@ if ((isset($_SESSION['status_log']) && $_SESSION['status_log'] == true ) || (iss
 
         <form action="../controller/post.php" class="formLogin animated fadeIn" method="post">
           <div class="back-select d-flex justify-content-between">
-            <a href="/" class="text-dark"><i class="fas fa-chevron-left"></i> Voltar</a>
+            <a href="../" class="text-dark"><i class="fas fa-chevron-left"></i> Voltar</a>
           </div>
           <h2 class="title my-3">Faça seu logon</h2>
           <div class="form-group mb-4">

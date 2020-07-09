@@ -54,6 +54,29 @@ function previewPost() {
   }
 }
 
+function previewModalMovie(){
+  let titleMovie = $('.header-modal h3');
+  let sinopse = $('.main-modal #sinopse');
+  let diretor = $('.main-modal #diretor')
+  let elenco = $('.main-modal #elenco');
+
+  $('input[name="movieName"]').change(event => titleMovie.html(event.currentTarget.value))
+  $('form #movieSinopse').change(event => sinopse.html(event.currentTarget.value))
+  $('input[name="directorName"]').change(event => diretor.html('Dirigido por: '+event.currentTarget.value))
+  $('form #movieElenco').change(event => elenco.html('Estrelando: '+event.currentTarget.value))
+
+  $('#movieBanner').change(function(){
+    const file = $(this)[0].files[0];
+    const fileReader = new FileReader;
+  
+    fileReader.onloadend = () => {
+      $('.banner-modal img#banner').attr('src', fileReader.result)
+    }
+    fileReader.readAsDataURL(file);
+  })
+}
+previewModalMovie();
+
 function insertMovie(id) {
   let modal = document.querySelector(`.movie${id}`); //pegando cada modal com id
 
@@ -80,13 +103,6 @@ function insertMovie(id) {
     .fail((err) => {
       console.log("error" + err);
     });
-}
-function changeProfilePic(id) {
-  $.post("../controller/put.php", { profile_pic: "1", id: id }).done(
-    (response) => {
-      console.log(response);
-    }
-  );
 }
 
 (($) => {
@@ -169,14 +185,13 @@ function changeProfilePic(id) {
 
   const followersQtd = [
     { nome: "Cinemark", fotoperfil: "1590959529725-cinr.jpg", id: 1 },
-    { nome: "Kaiquinho Grau", fotoperfil: "avatarperfil.png", id: 2 },
-    { nome: "Thaizinha quebra", fotoperfil: "avatarperfil.png", id: 3 },
-    {nome: 'Maxx vrau', fotoperfil: '1591477595958-image-ce4a303e-ae42-4641-bd97-5e0d2e0c491e.jpg', id: 4}
+    { nome: "Kaiquinho", fotoperfil: "avatarperfil.png", id: 2 },
+    { nome: "Thaiz Reis", fotoperfil: "avatarperfil.png", id: 3 },
+    {nome: 'Max vrau', fotoperfil: '1591477595958-image-ce4a303e-ae42-4641-bd97-5e0d2e0c491e.jpg', id: 4}
   ];
 
   const moviesRiseQtd = [
-    { nome: "Coringa", id: 1 },
-    { nome: "Malévola 2: dona do mal", id: 2 },
+    { nome: "Coringa", id: 1 },,
   ];
 
   $(".title #followers").html(`${followersQtd.length} seguidores`);
@@ -210,3 +225,124 @@ function changeProfilePic(id) {
     })
   })
 })(jQuery);
+
+function setProfilePicCompany(id) {
+  let profilePic = $("form #profilePic")[0];
+  let picName = profilePic.files[0].name;
+  let formatPic = picName.split(".")[1];
+  
+  var formData = new FormData();
+  
+  formData.append("fileData", profilePic.files[0]);
+  if (formatPic == "jpg" || formatPic == "png" || formatPic == "svg") {
+    $.ajax({
+      url: `http://localhost:3000/empresa/fotoempresa/${id}`,
+      type: 'PUT',
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: () =>{ alert('Imagem trocada')}
+    }).fail(function(err) {
+      alert( "error" + err);
+    })
+  }else{
+    alert('Formato de imagem não surpotado');
+  }
+
+}
+function uploadMovie(){
+
+  var formData = new FormData();
+
+  let movieName = $('input[name="movieName"]');
+  formData.append('nome', movieName.val());
+  formData.append('nome_ori', movieName.val());
+
+  let directorName = $('.input[name="directorName"]');
+  formData.append('diretor', directorName.val())
+
+  let origem = $('input[name="origem"]');
+  formData.append('pais_ori', origem.val())
+
+  let dataEstreta = $('input[name="dataEstreta"]');
+  formData.append('data_estreia', dataEstreta.val())
+
+  let classificacao = $('input[name="classificacao"]');
+  formData.append('class', classificacao.val());
+
+  let destribuidora = $('input[name="destribuidora"]');
+  formData.append('distribuidor', destribuidora.val())
+
+  let movieTrailer = $('input[name="movieTrailer"]');
+  formData.append('trailer', movieTrailer.val())
+
+  let movieTime = $('input[name="movieTime"]');
+  formData.append('duracao', movieTime.val())
+
+  let movieGenero = $('input[name="movieGenero"]');
+  formData.append('genero', movieGenero.val())
+
+  let moviePoster = $('input[name="moviePoster"]')[0];
+  formData.append('img', moviePoster.files[0])
+  let movieBanner = $('input[name="movieBanner"]')[0];
+  formData.append('img', movieBanner.files[0])
+
+  let movieSinopse = $('#movieSinopse');
+  formData.append('sinopse', movieSinopse.val())
+
+  let movieElenco = $('#movieElenco');
+  
+  let formatPoster = moviePoster.files[0].name.split(".")[1];
+  let formatBanner = movieBanner.files[0].name.split('.')[1];
+  let movieLink = movieTrailer.val().split('.be/')[1];
+
+  let imagesArray =[moviePoster.files[0], movieBanner.files[0]]
+  if(formatPoster == "jpg" || formatPoster == "png" || formatPoster == "svg" || formatPoster == "jpeg" && formatBanner == 'jpg' || formatBanner == 'png' || formatBanner == 'svg' || formatBanner == 'jpeg'){
+  $.ajax({
+    url: 'http://localhost:3000/filmes/',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: () =>{ alertify.alert('Filme Lançado', 'Seu Público Agradece').set({ onclosing:function(){ alertify.success('Confira seu filme na aba de filmes.')}}) }
+    }).fail(err => {alertify.set('notifier','position', 'top-center'); alertify.error('Ouve um erro com os campos digitados, por favor confira') })
+  }else{
+    alertify.error('Para fazer o upload de filme, é necessario inserir uma imagem valida')
+  }
+
+  $('form#movie-form')[0].reset()
+}
+
+function uploadPost(id) {
+    let postText = $('.postForm textarea[name="post-text"]').val();
+    let postImage = $('input#post-image')[0];
+
+      let formatImage =  postImage.files[0].name.split('.')[1];
+
+    var formData = new FormData();
+    formData.append('note', postText);
+    formData.append('img', postImage.files[0]);
+    formData.append('fk_usuario', id);
+
+    if(formatImage == "jpg" || formatImage == "png" || formatImage == "svg" || formatImage == "jpeg"){
+    $.ajax({
+      url: 'http://localhost:3000/posts/',
+      type: 'POST',
+      data: formData,
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: () =>{ alertify.alert('Publicação Feita', 'Veja a interação do seu público na sua publicação').set({ onclosing:function(){ alertify.success('Veja sua publicação na aba de publicação.')}}); $('.postForm form')[0].reset(); }
+      }).fail(err => {alertify.set('notifier','position', 'top-center'); alertify.error('Ouve um erro com os campos digitados, por favor confira') })
+    }else{
+      alertify.error('Para fazer o upload de um post, é necessario inserir uma imagem valida')
+    }
+}
+$('form#movie-form').on('submit', event =>{ 
+  event.preventDefault();
+  uploadMovie();
+});
+
+$('.postForm form').on('submit', event => {event.preventDefault();})

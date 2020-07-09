@@ -28,8 +28,8 @@
       $this->movieObject = json_decode($response->getBody());
     }
 
-    function getPost($qtd){
-      $response = $this->url->request('GET', '');
+    function getPost($id,$qtd){
+      $response = $this->url->request('GET', 'posts/postempresa/'.$id.'/'.$qtd);
       $this->postObject = json_decode($response->getBody());
     }
 

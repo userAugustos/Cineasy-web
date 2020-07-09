@@ -1,7 +1,9 @@
 //windows scroll
 $(window).scroll(() => {
-  if ($(document).scrollTop() > 1400 && $("#modalPlanos").attr("displayed") === "false") {
-    if(width < 880){
+  var width = $(window).width()
+
+  if ($(document).scrollTop() > 1000 && $("#modalPlanos").attr("displayed") === "false") {
+    if(width < 680){
       $(this).hide();
       return
     }
@@ -37,7 +39,7 @@ $(document).ready(() => {
             <button type="button" data-dismiss="modal"><img src="../assets/toggle.png" alt=""></button>
           </div>
           <div class="banner-modal">
-           	<img src="../assets/sonic-banner.jpg" alt="">
+           	<img src="http://localhost:3000/filmes/poster/${movieInfo[0].banner}" alt="">
             <div class="main-modal">
             	<h2></h2>
             	<p>${movieInfo[0].sinopse}</p>
