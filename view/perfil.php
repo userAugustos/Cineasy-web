@@ -104,14 +104,14 @@ $id = $_SESSION['user_id'];
             <div class="profile-phrase">
               Altere a frase de perfil
               <div class="phrase">
-                <form class="" action="" method="POST" id="phrase-form" enctype="multipart/form-data">
+                <form class="" action="../controller/put.php" method="POST" id="phrase-form" enctype="multipart/form-data">
                   <input type="hidden" name="_method" value="put" />
                   <div class="">
                     <span></span>
                     <input type="text" name="phrase" id="phrase">
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-dark" name="phrase-profile" onclick="setProfilePhrase(<?= $id ?>, <?= $user->nome ?>)">
+                    <button type="submit" class="btn btn-dark" name="phrase-profile" >
                       alterar
                     </button>
                   </div>

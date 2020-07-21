@@ -36,32 +36,31 @@ class PutMetods{
           exit();
         }
     }
-    function updatePic(){
-      $id = $_SESSION['user_id'];
+    function updatePhrase(){
       try {
-       $response = $this->url->request('PUT', '/empresa/fotoempresa/'.$id, 
-       ['json'=> [
-         $_FILES['fileData'],
-        'idUser' => $id,
-        'fotoperfil' => $_FILES['fileData']['name']
-       ]]);
-      } catch (ClientException $e) {
+        $response = $this->url->request('PUT', 'usuarios/editadados/'. $_SESSION['user_id'], ['json' => [
+          'nome' => $_SESSION['user_name'],
+          'frase' => $_POST['phrase']
+        ]]);
+      }catch (ClientException $e) {
         Psr7\str($e->getRequest());
         echo Psr7\str($e->getResponse());
         $error = true;
       }
-      if (!$error) {
-        $_SESSION['exchanged'] = true;
-        echo $_FILES['fileData'];
-        echo $response->getBody();
-      } else {
-        $_SESSION['exchanged'] = false;
+
+      if(!$error){
+        $_SESSION['change_phrase'] = true;
+        header('Location: ../view/perfil.php');
+        exit();
+      }else{
+        $_SESSION['change_phrase'] = false;
+        header('Location: ../view/perfil.php');
+        exit();
       }
-      // header('Location: ../view/company.php');
-   }
+    }
   }
   $put = new PutMetods();
 
-  if (isset($_POST['profile_pic'])) {
-    $put->updatePic();
+  if (isset($_POST['phrase-profile'])) {
+    $put->updatePhrase();
   }

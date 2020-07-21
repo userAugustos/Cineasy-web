@@ -224,3 +224,7 @@ input#phrase{
   max-width: 100%;
   max-height: 4rem;
 }
+
+/* input[type="file"]{
+  display: none;
+} */

@@ -355,6 +355,9 @@ div.pub-post {
 .show-posts .publicacao{
   max-height: 75vh;
 }
+.show-posts .publicacao img{
+  max-width: 100%;
+}
 /*variables class*/
 .visible {
   display: flex;

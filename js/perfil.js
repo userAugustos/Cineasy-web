@@ -46,6 +46,7 @@ const Profile = (function(){
 
 })();
 
+
 function previewFile(input, image){
   input.change(function(){
     const file = $(this)[0].files[0];
@@ -108,30 +109,7 @@ function setBannerPicUser(id) {
     alert('Formato de imagem não surpotado');
   }  
 }
-function setProfilePhrase(id, name) {
-  alert('Oi')
-  console.log(id, name)
-  let formData = new FormData();
 
-  let phrase = $('input[name="phrase"]');
-
-  formData.append('nome', name)
-  formData.append('frase', phrase.val());
-
-  $.ajax({
-    url: `http://localhost:3000/usuarios/editadados/${id}`,
-    type: 'PUT',
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: () => {
-      alert('Frase Trocada')
-    }
-  }).fail(function(err) {
-    alert("Tivemos um problema incomum" + err);
-  })
-}
 previewFile($('.profile-pic input[name="profilePic"]'), $('.profile-pic img'));
 previewFile($('.banner input[name="bannerPic"]'), $('.banner img'));
 previewText($('.phrase input[name="phrase"]'), $('.cover-description'));
